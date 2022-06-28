@@ -18,4 +18,6 @@ public class Country {
     private String description;
     @OneToMany(mappedBy = "country")
     private Set<Address> addresses;
+    @OneToMany(mappedBy = "country")
+    private Set<City> cities;
 }
