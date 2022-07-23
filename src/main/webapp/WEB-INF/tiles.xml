@@ -14,8 +14,15 @@
         <put-attribute name="body" value="" />
         <put-attribute name="footer" value="/WEB-INF/basefragments/footer.jsp" />
     </definition>
+    <!-- Base Define -->
+    <definition name="base.definition.center" template="/WEB-INF/layouts/classic.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/WEB-INF/basefragments/header.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/basefragments/footer.jsp" />
+    </definition>
     <!-- Index Page  -->
-    <definition name="index" extends="base.definition">
+    <definition name="index" extends="base.definition.center">
         <put-attribute name="title" value="Home Page" />
         <put-attribute name="body" value="/WEB-INF/views/index.jsp" />
     </definition>

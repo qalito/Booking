@@ -5,12 +5,14 @@ import com.tosya.may.booking.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CityService {
     @Autowired
     private CityRepository cityRepository;
 
-    public Iterable<City> getAll() {
-        return cityRepository.findAll();
+    public List<City> getAll() {
+        return (List<City>) cityRepository.findAll();
     }
 }

@@ -2,15 +2,17 @@ package com.tosya.may.booking.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Set;
-
 @Entity
 @Getter
 @Setter
-public class User {
+public class User implements UserDetails {
     @Id
     private int id;
     private String login;
@@ -26,5 +28,37 @@ public class User {
     private Set<Basket> baskets;
     @OneToMany(mappedBy = "user")
     private Set<Booking> bookings;
+    @Transient
+    private String passwordConfirm;
 
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return (Collection<? extends GrantedAuthority>) getRole();
+    }
+
+    @Override
+    public String getUsername() {
+        return this.getLogin();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

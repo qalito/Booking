@@ -2,6 +2,7 @@ package com.tosya.may.booking.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -23,9 +24,13 @@ public class Apartment {
     private int capacity;
     private BigDecimal price;
     private double rating;
+
     @ManyToOne
     @JoinColumn(name = "partner_id")
     private Partner partner;
+    @OneToOne()
+    @JoinColumn(name = "image_id")
+    private Image image;
     @ManyToMany
     @JoinTable(
             name = "comfort_apartment",
