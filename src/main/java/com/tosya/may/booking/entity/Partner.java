@@ -14,7 +14,7 @@ public class Partner {
     private int id;
     private String name;
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "username", referencedColumnName = "username")
     private User user;
     private double raiting;
     @OneToMany(mappedBy="partner")

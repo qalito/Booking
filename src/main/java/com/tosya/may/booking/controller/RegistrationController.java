@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 @Controller
 public class RegistrationController {
-
+/*
     @Autowired
     private UserService userService;
 
@@ -46,6 +46,6 @@ public class RegistrationController {
         }
         System.out.println("*");
         return "redirect:/";
-    }
+    }*/
 }
 

@@ -1,5 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!DOCTYPE html>
 <html>
@@ -10,20 +10,28 @@
 
 <body>
 <sec:authorize access="isAuthenticated()">
-    <% response.sendRedirect("/"); %>
+        <% response.sendRedirect("/"); %>
 </sec:authorize>
-<div>
-    <form method="POST" action="/login">
-        <h2>Вход в систему</h2>
-        <div>
-            <input name="login" type="text" placeholder="Login"
-                   autofocus="true"/>
-            <input name="password" type="password" placeholder="Password"/>
-            <button type="submit">Log In</button>
-            <h4><a href="/registration">Зарегистрироваться</a></h4>
-        </div>
-    </form>
+<head>
+    <title>Spring Security Example</title>
+</head>
+<body>
+<div if="${param.error}">
+    <p text="${session.error}" unless="${session == null}"></p>
 </div>
-
+<div if="${param.logout}">You have been logged out.</div>
+<form action="/login" method="post">
+    <div>
+        <label> User Name : <input type="text" name="username"/> </label>
+    </div>
+    <div>
+        <label> Password: <input type="password" name="password"/> </label>
+    </div>
+    <div>
+        <input type="submit" value="Sign In"/></div>
+</form>
+<form action="/register" method="get">
+    <input type="submit" value="Register"/></div>
+</form>
 </body>
 </html>

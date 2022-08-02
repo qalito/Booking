@@ -20,7 +20,7 @@ public class Booking {
     private LocalDate dateStart;
     private LocalDate dateTo;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "username")
     private User user;
     private BigDecimal total;
     @ManyToMany

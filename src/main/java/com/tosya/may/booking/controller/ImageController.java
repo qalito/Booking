@@ -17,18 +17,11 @@ public class ImageController {
     @Autowired
     private ImageService imageService;
     @RequestMapping("/getImages/{id}")
-    public void getImage(HttpServletResponse response, @PathVariable("id") final String id) throws IOException {
-        System.out.println("getImages"+id);
+    public void getImage(HttpServletResponse response, @PathVariable("id") final int id) throws IOException {
         response.setContentType("image/jpeg");
-        byte[] imageBytes = imageService.getById(Integer.parseInt(id)).getData();
+        byte[] imageBytes = imageService.getById(id).getData();
         response.getOutputStream().write(imageBytes);
         response.getOutputStream().flush();
-    }
-    @RequestMapping(value = "/images/{imageid}", produces = MediaType.IMAGE_JPEG_VALUE)
-    public @ResponseBody  byte[]  getImage(@PathVariable int imageid) throws IOException {
-        byte[] image = imageService.getById(imageid).getData();
-        return  image;
-
     }
     @GetMapping("/setImage")
     public void  getFile() throws IOException {

@@ -15,7 +15,7 @@ public class Basket {
     @Id
     private int id;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "username")
     private User user;
     private LocalDateTime checkoutTime;
     private LocalDate dateStart;

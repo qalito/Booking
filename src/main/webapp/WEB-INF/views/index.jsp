@@ -45,22 +45,39 @@
         });
     });
 </script>
+${pageContext.request.userPrincipal.name}
 <h3>Популярные направления:</h3>
-
-
-<c:forEach var="city" items="${listCity}">
-    <div class="card" style="width: 18rem;">
-            ${city.image.data.toString()}
-        <img src="/getImages/${city.image.id}">
-         <img  src="<c:out value='${pageContext.request.contextPath}/images/${user.id}'/>" alt="Profile Photo"></a>
-        <p class="card-text">${city.image.id}</p>
-        <div class="card-body">
-            <h5 class="card-title">${city.name}</h5>
-            <p class="card-text">${city.description}</p>
-            <a href="/" class="btn btn-primary">Переход куда-нибудь</a>
+<h3>Страны:</h3>
+<div class="card-group">
+    <c:forEach var="country" items="${listCountry}">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-bottom" src="/getImages/${country.image.id}" alt="${country.image.name}">
+            <div class="card-body">
+                <h5 class="card-title">${country.name}</h5>
+                <p class="card-text">${country.description}</p>
+                <select class="custom-select" id="inputGroupSelect02" autocomplete="on">
+                    <option disabled selected>Города</option>
+                    <c:forEach var="city" items="${listCity}">
+                        <c:out value="${city.id}"/>
+                        <option value=<c:out value="${city.id}"/>><c:out value="${city.name}"/></option>
+                    </c:forEach>
+                </select>
+            </div>
         </div>
-    </div>
-</c:forEach>
+    </c:forEach>
+</div>
+<div class="card-group">
+    <c:forEach var="city" items="${listCity}">
+        <div class="card" style="width: 18rem;">
+            <img src="/getImages/${city.image.id}" alt="${city.image.name}">
+            <div class="card-body">
+                <h5 class="card-title">${city.name}</h5>
+                <p class="card-text">${city.description}</p>
+                <a href="/" class="btn btn-primary">Переход куда-нибудь</a>
+            </div>
+        </div>
+    </c:forEach>
+</div>
 
 </body>
 </div>

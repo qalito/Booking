@@ -1,4 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: tosya
@@ -32,13 +33,21 @@
                 <a class="dropdown-item" href="?lang=en"><spring:message code="app.lang.english"/></a>
                 <a class="dropdown-item" href="?lang=ru"><spring:message code="app.lang.russian"/></a>
             </div>
-            <a class="btn btn-outline-light" name="RegisterAsPartner" href="/registration"><spring:message
-                    code="app.header.registerPartner"/></a>
-            <a class="btn btn-outline-light" name="Register" href="/registration"><spring:message
-                    code="app.header.register"/></a>
-            <a class="btn btn-outline-light" name="SignIn" href="/login"><spring:message
-                    code="app.header.sign"/></a>
-
+            <sec:authorize access="!isAuthenticated()">
+                <a class="btn btn-outline-light" name="RegisterAsPartner" href="/register"><spring:message
+                        code="app.header.registerPartner"/></a>
+                <a class="btn btn-outline-light" name="Register" href="/register"><spring:message
+                        code="app.header.register"/></a>
+                <a class="btn btn-outline-light" name="SignIn" href="/login"><spring:message
+                        code="app.header.sign"/></a>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <a class="btn btn-outline-light" class="btn btn-outline-light">Профиль
+                    <span class="badge badge-pill badge-success">${pageContext.request.userPrincipal.name}</span>
+                </a>
+                <a class="btn btn-outline-light" name="SignOut" href="/logout"><spring:message
+                        code="app.header.signOut"/></a>
+            </sec:authorize>
         </div>
     </div>
 </div>
