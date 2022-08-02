@@ -2,10 +2,12 @@ package com.tosya.may.booking.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 
 @Entity
+@Lazy
 public class Image {
 
     @Id
@@ -16,11 +18,17 @@ public class Image {
     private String type;
 
     @Lob
-    @Type(type="org.hibernate.type.ImageType")
+    @Type(type = "org.hibernate.type.ImageType")
     private byte[] data;
 
     @OneToOne(mappedBy = "image")
     private Apartment apartment;
+
+    @OneToOne(mappedBy = "image")
+    private City city;
+
+    @OneToOne(mappedBy = "image")
+    private Country country;
 
     public Image() {
     }
@@ -29,6 +37,17 @@ public class Image {
         this.name = name;
         this.type = type;
         this.data = data;
+    }
+
+    public Image(int id, String name, String type, byte[] data) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.data = data;
+    }
+
+    public Image(int id) {
+        this.id = id;
     }
 
     public int getId() {

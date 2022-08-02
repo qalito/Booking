@@ -3,9 +3,7 @@ package com.tosya.may.booking.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -20,4 +18,7 @@ public class Country {
     private Set<Address> addresses;
     @OneToMany(mappedBy = "country")
     private Set<City> cities;
+    @OneToOne()
+    @JoinColumn(name = "image_id")
+    private Image image;
 }

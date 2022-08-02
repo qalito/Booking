@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: tosya
-  Date: 14.07.2022
-  Time: 13:23
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
@@ -23,7 +16,7 @@
     <form method="POST" action="/login">
         <h2>Вход в систему</h2>
         <div>
-            <input name="username" type="text" placeholder="Username"
+            <input name="login" type="text" placeholder="Login"
                    autofocus="true"/>
             <input name="password" type="password" placeholder="Password"/>
             <button type="submit">Log In</button>

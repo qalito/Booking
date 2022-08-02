@@ -17,6 +17,9 @@ public class City {
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
+    @OneToOne()
+    @JoinColumn(name = "image_id")
+    private Image image;
     @OneToMany(mappedBy = "city")
     private Set<Address> addresses;
 

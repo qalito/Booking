@@ -16,21 +16,9 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
 
-<div>
-    <h3>${pageContext.request.userPrincipal.name}</h3>
-    <sec:authorize access="!isAuthenticated()">
-        <h4><a href="/login">Войти</a></h4>
-        <h4><a href="/registration">Зарегистрироваться</a></h4>
-    </sec:authorize>
-    <sec:authorize access="isAuthenticated()">
-        <h4><a href="/logout">Выйти</a></h4>
-    </sec:authorize>
-    <h4><a href="/news">Новости (только пользователь)</a></h4>
-    <h4><a href="/admin">Пользователи (только админ)</a></h4>
-</div>
-
 <body weight="80%">
-<div name="chooseInfo" style="background: #FFCD00; padding: 5px;"style="background: #2E77CD; height: 100px; padding: 5px;" >
+<div name="chooseInfo" style="background: #FFCD00; padding: 5px;"
+     style="background: #2E77CD; height: 100px; padding: 5px;">
     <div class="input-group mb">
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Заезд - Выезд</label>
@@ -40,11 +28,11 @@
             <option disabled selected>Куда хотите отправиться?</option>
             <c:forEach var="city" items="${listCity}">
                 <c:out value="${city.id}"/>
-                <option value=<c:out value="${city.id}"/>> <c:out value="${city.name}"/> </option>
+                <option value=<c:out value="${city.id}"/>><c:out value="${city.name}"/></option>
             </c:forEach>
         </select>
         <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
+            <button class="btn btn-outline-secondary" type="button">Поиск</button>
         </div>
     </div>
 </div>
@@ -57,8 +45,22 @@
         });
     });
 </script>
-<form action="/logout" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
+<h3>Популярные направления:</h3>
+
+
+<c:forEach var="city" items="${listCity}">
+    <div class="card" style="width: 18rem;">
+            ${city.image.data.toString()}
+        <img src="/getImages/${city.image.id}">
+         <img  src="<c:out value='${pageContext.request.contextPath}/images/${user.id}'/>" alt="Profile Photo"></a>
+        <p class="card-text">${city.image.id}</p>
+        <div class="card-body">
+            <h5 class="card-title">${city.name}</h5>
+            <p class="card-text">${city.description}</p>
+            <a href="/" class="btn btn-primary">Переход куда-нибудь</a>
+        </div>
+    </div>
+</c:forEach>
+
 </body>
 </div>

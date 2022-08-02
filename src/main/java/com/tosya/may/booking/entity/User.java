@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Set;
@@ -18,6 +19,10 @@ public class User implements UserDetails {
     private String login;
     private String name;
     private String password;
+    private LocalDate dateOfBirth;
+    private String email;
+    private String phoneNumber;
+    private Gender gender;
     private LocalDateTime regDate;
     @ManyToOne
     @JoinColumn(name = "roleId")
@@ -60,5 +65,8 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+    public enum Gender {
+        MALE, FEMALE
     }
 }
