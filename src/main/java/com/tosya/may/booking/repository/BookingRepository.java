@@ -1,9 +1,9 @@
 package com.tosya.may.booking.repository;
 
-import com.tosya.may.booking.entity.Image;
+import com.tosya.may.booking.entity.Booking;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ImageRepository extends CrudRepository<Image, Integer> {
+public interface BookingRepository extends CrudRepository<Booking, Integer> {
 }

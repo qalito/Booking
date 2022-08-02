@@ -32,7 +32,9 @@
             </c:forEach>
         </select>
         <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary" type="button">Поиск</button>
+            <form action="/searchresults" method="get">
+            <button class="btn btn-outline-secondary"  type="submit">Поиск</button>
+            </form>
         </div>
     </div>
 </div>
