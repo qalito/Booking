@@ -15,6 +15,7 @@ public class Apartment {
     @Id
     private int id;
     private String name;
+    private String description;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
@@ -24,11 +25,10 @@ public class Apartment {
     private int capacity;
     private BigDecimal price;
     private double rating;
-
     @ManyToOne
     @JoinColumn(name = "partner_id")
     private Partner partner;
-    @OneToOne()
+    @ManyToOne()
     @JoinColumn(name = "image_id")
     private Image image;
     @ManyToMany

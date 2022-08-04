@@ -34,19 +34,26 @@
                 <a class="dropdown-item" href="?lang=ru"><spring:message code="app.lang.russian"/></a>
             </div>
             <sec:authorize access="!isAuthenticated()">
-                <a class="btn btn-outline-light" name="RegisterAsPartner" href="/register"><spring:message
+                <a class="btn btn-outline-light" name="RegisterAsPartner" href="/register?role=PARTNER"><spring:message
                         code="app.header.registerPartner"/></a>
-                <a class="btn btn-outline-light" name="Register" href="/register"><spring:message
+                <a class="btn btn-outline-light" name="Register" href="/register?role=USER"><spring:message
                         code="app.header.register"/></a>
                 <a class="btn btn-outline-light" name="SignIn" href="/login"><spring:message
                         code="app.header.sign"/></a>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
-                <a class="btn btn-outline-light" class="btn btn-outline-light">Профиль
+            <div class="dropdown"  style="float:right;">
+                <a class="btn btn-outline-light" class="btn btn-outline-light" id="dropdownMenu1" data-toggle="dropdown" >Профиль
                     <span class="badge badge-pill badge-success">${pageContext.request.userPrincipal.name}</span>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <a class="btn btn-light" href="/account">Аккаунт</a>
+                        <a class="btn btn-light" href="/booking">Бронирования</a>
+                    </div>
                 </a>
+            </div>
                 <a class="btn btn-outline-light" name="SignOut" href="/logout"><spring:message
                         code="app.header.signOut"/></a>
+
             </sec:authorize>
         </div>
     </div>

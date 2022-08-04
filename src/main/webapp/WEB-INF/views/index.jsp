@@ -43,11 +43,10 @@
         $('input[name="daterange"]').daterangepicker({
             opens: 'left'
         }, function (start, end, label) {
-            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            console.log("A new date selection was made: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
         });
     });
 </script>
-${pageContext.request.userPrincipal.name}
 <h3>Популярные направления:</h3>
 <h3>Страны:</h3>
 <div class="card-group">
@@ -75,11 +74,10 @@ ${pageContext.request.userPrincipal.name}
             <div class="card-body">
                 <h5 class="card-title">${city.name}</h5>
                 <p class="card-text">${city.description}</p>
-                <a href="/" class="btn btn-primary">Переход куда-нибудь</a>
+                <a href="/" class="btn btn-primary">Поиск по введенным данным</a>
             </div>
         </div>
     </c:forEach>
 </div>
-
 </body>
 </div>

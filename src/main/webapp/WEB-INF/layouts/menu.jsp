@@ -20,10 +20,10 @@
         </td>
     </tr>
     <tr>
-        <td width="20%" nowrap="nowrap">
+        <td width="30%" nowrap="nowrap" valign="top">
             <tiles:insertAttribute name="menu" />
         </td>
-        <td width="80%">
+        <td width="70%">
             <tiles:insertAttribute name="body" />
         </td>
     </tr>

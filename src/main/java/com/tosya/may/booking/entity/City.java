@@ -17,27 +17,11 @@ public class City {
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
-    @OneToOne()
+    @ManyToOne()
     @JoinColumn(name = "image_id")
     private Image image;
     @OneToMany(mappedBy = "city")
     private Set<Address> addresses;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     @Override
     public String toString() {

@@ -20,12 +20,12 @@ public class User implements UserDetails {
     private static final long serialVersionUID = 1L;
     @Column(name = "account_non_locked")
     private boolean accountNonLocked;
-   // private String name;
-    //private LocalDate dateOfBirth;
-    //private String email;
-    //private String phoneNumber;
-    //private Gender gender;
-    //private LocalDateTime regDate;
+    private String name;
+    private LocalDate dateOfBirth;
+    private String email;
+    private String phoneNumber;
+    private Gender gender;
+    private LocalDateTime regDate;
    @ManyToOne
     @JoinColumn(name = "roleId")
     private Role role;

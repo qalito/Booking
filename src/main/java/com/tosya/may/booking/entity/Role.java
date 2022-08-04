@@ -15,7 +15,7 @@ import java.util.Set;
 public class Role implements GrantedAuthority {
     @Id
     private int id;
-    private String Name;
+    private String name;
     @OneToMany(mappedBy = "role")
     private Set<User> users;
 
@@ -24,7 +24,7 @@ public class Role implements GrantedAuthority {
 
     public Role(int id, String name) {
         this.id = id;
-        Name = name;
+        this.name = name;
     }
 
     @Override

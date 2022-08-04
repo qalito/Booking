@@ -1,13 +1,17 @@
 package com.tosya.may.booking.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Lazy
+@Getter
+@Setter
 public class Image {
 
     @Id
@@ -21,14 +25,14 @@ public class Image {
     @Type(type = "org.hibernate.type.ImageType")
     private byte[] data;
 
-    @OneToOne(mappedBy = "image")
-    private Apartment apartment;
+    @OneToMany(mappedBy = "image")
+    private Set<Apartment> apartments;
 
-    @OneToOne(mappedBy = "image")
-    private City city;
+    @OneToMany(mappedBy = "image")
+    private  Set<City> cites;
 
-    @OneToOne(mappedBy = "image")
-    private Country country;
+    @OneToMany(mappedBy = "image")
+    private  Set<Country> countries;
 
     public Image() {
     }
@@ -50,43 +54,4 @@ public class Image {
         this.id = id;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public byte[] getData() {
-        return data;
-    }
-
-    public void setData(byte[] data) {
-        this.data = data;
-    }
-
-    public Apartment getApartment() {
-        return apartment;
-    }
-
-    public void setApartment(Apartment apartment) {
-        this.apartment = apartment;
-    }
 }
