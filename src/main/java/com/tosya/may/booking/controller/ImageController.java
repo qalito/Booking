@@ -25,9 +25,7 @@ public class ImageController {
     }
     @GetMapping("/setImage")
     public void  getFile() throws IOException {
-        System.out.println("getImages");
         InputStream in = getClass().getResourceAsStream("/image/img.png");
-        System.out.println("Stream = " + in);
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         int nRead;
         byte[] data = new byte[4];

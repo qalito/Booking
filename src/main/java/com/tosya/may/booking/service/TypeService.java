@@ -14,4 +14,7 @@ public class TypeService {
     public List<Type> getFilter(){
         return typeRepository.findAll();
     }
+    public Type getTypeById(int id){
+        return typeRepository.getById(id);
+    }
 }

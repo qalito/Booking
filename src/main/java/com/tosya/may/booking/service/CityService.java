@@ -16,7 +16,10 @@ public class CityService {
         return (List<City>) cityRepository.findAll();
     }
 
-    List<City> getCityByCountry(int id) {
+    public List<City> getCityByCountry(int id) {
         return (List<City>) cityRepository.getCityByCountry(id);
+    }
+    public City getCityById(int id) {
+        return  cityRepository.getCitiesById(id);
     }
 }

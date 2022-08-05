@@ -14,27 +14,24 @@
     <title>Апартаменты</title>
 </head>
 <body>
-<div class="card" style="width: 69rem;" >
+<div class="card" style="width: 69rem;">
     <p>Город, Найдено X Результатов по заданным параметрам</p>
-    <a href="/" class="btn btn-primary">Сортировка по рейтингу</a>
-    <a href="/" class="btn btn-primary">Сортировка по стоимости</a>
-    </div>
-    <c:forEach var="apartment" items="${listApartments}">
-        <div class="card" style="width: 69rem;" >
-            <h5 class="card-title">${apartment.name}</h5>
-            <img class="card-img-bottom" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
-            <div class="card-body">
-
-                <p class="card-text">${apartment.type.name}</p>
-                <p class="card-text">${apartment.address.city.name}</p>
-                <p class="card-text">${apartment.address.country.name}</p>
-                <p class="card-text">${apartment.address.value}</p>
-                <p class="card-text">${apartment.capacity}</p>
-                <p class="card-text">${apartment.price}</p>
-                <p class="card-text">${apartment.rating}</p>
-                <a href="/" class="btn btn-primary">Забронировать</a>
-            </div>
+</div>
+<c:forEach var="apartment" items="${listApartments}">
+    <div class="card" style="width: 69rem;">
+        <h5 class="card-title">${apartment.name}</h5>
+        <img class="card-img-bottom" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
+        <div class="card-body">
+            <p class="card-text">${apartment.type.name}</p>
+            <p class="card-text">${apartment.address.city.name}</p>
+            <p class="card-text">${apartment.address.country.name}</p>
+            <p class="card-text">${apartment.address.value}</p>
+            <p class="card-text">${apartment.capacity}</p>
+            <p class="card-text">${apartment.price}</p>
+            <p class="card-text">${apartment.rating}</p>
+            <a href="/" class="btn btn-primary">Забронировать</a>
         </div>
-    </c:forEach>
+    </div>
+</c:forEach>
 </body>
 </html>

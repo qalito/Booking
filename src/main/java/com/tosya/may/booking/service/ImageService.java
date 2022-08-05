@@ -11,7 +11,6 @@ public class ImageService {
     @Autowired
     private ImageRepository imageRepository;
     public Image getById(int id) {
-        System.out.println("Image");
         return imageRepository.findById(id).orElseThrow(() -> new ImageNotFoundException(id));
     }
     public Image setImage(Image image){

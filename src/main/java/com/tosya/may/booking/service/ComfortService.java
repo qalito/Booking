@@ -15,4 +15,5 @@ public class ComfortService {
     public List<Comfort> getComfort(){
         return comfortRepository.findAll();
     }
+    public Comfort getComfortById(int id){return  comfortRepository.getById(id);}
 }

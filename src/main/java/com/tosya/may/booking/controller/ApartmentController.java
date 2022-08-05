@@ -1,27 +1,51 @@
 package com.tosya.may.booking.controller;
 
-import com.tosya.may.booking.service.ApartmentService;
-import com.tosya.may.booking.service.ComfortService;
-import com.tosya.may.booking.service.TypeService;
-import com.tosya.may.booking.service.UserService;
+import com.tosya.may.booking.entity.City;
+import com.tosya.may.booking.entity.Comfort;
+import com.tosya.may.booking.entity.Type;
+import com.tosya.may.booking.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.trace.http.HttpTrace;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.time.LocalDate;
+import java.util.*;
+
 @Controller
 public class ApartmentController {
+    @Autowired
+    private CityService cityService;
     @Autowired
     private ApartmentService apartmentService;
     @Autowired
     private TypeService typeService;
     @Autowired
     private ComfortService comfortService;
+
     @GetMapping("/searchresults")
     public String getAll(ModelMap model) {
-        model.addAttribute("listApartments", apartmentService.getAll());
         model.addAttribute("listFilter", typeService.getFilter());
         model.addAttribute("listComfort", comfortService.getComfort());
+        model.addAttribute("listCity", cityService.getAll());
+        model.addAttribute("listApartments", apartmentService.getAll());
         return "searchresults";
     }
+
+    @PostMapping(value = "/searchresults")
+    public String getAllByFilterAndComfort(ModelMap model, @RequestParam Map<String, String> body) {
+        model.addAttribute("listFilter", typeService.getFilter());
+        model.addAttribute("listComfort", comfortService.getComfort());
+        model.addAttribute("listCity", cityService.getAll());
+        model.addAttribute("listApartments",apartmentService.getAllBy(body));
+       // System.out.println(apartmentService.getAllBy().toString());
+    //    model.addAttribute("listApartments",apartmentService.getAll());
+        return"searchresults";
+}
 
 }
