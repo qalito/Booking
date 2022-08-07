@@ -50,5 +50,9 @@
         <put-attribute name="title" value="admin"/>
         <put-attribute name="body" value="/WEB-INF/views/admin/adminPage.jsp"/>
     </definition>
+    <definition name="confirm" extends="base.definition.center">
+        <put-attribute name="title" value="confirm"/>
+        <put-attribute name="body" value="/WEB-INF/views/confirm.jsp"/>
+    </definition>
     <!-- ContactUs Page -->
 </tiles-definitions>

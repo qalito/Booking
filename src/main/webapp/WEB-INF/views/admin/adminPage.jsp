@@ -52,12 +52,14 @@
         <td>${user.gender}</td>
     </tr>
 </table>
-<a class="btn btn-outline-light" name="All users" href="/admin/users">Пользователи</a>
-<a class="btn btn-outline-light" name="All booking" href="/admin/booking">Бронирования</a>
-<a class="btn btn-outline-light" name="All booking" href="/admin/basket">Корзины</a>
-<a class="btn btn-outline-light" name="All booking" href="/admin/apartment">Aпартаменты</a>
-<a class="btn btn-outline-light" name="All booking" href="/admin/image">Изображения</a>
-<a class="btn btn-outline-light" name="All booking" href="/admin/country">Страны</a>
-<a class="btn btn-outline-light" name="All booking" href="/admin/country">Города</a>
+<a class="btn btn-outline-light" name="Users" href="/admin/users">Пользователи</a>
+<a class="btn btn-outline-light" name="Booking" href="/admin/booking">Бронирования</a>
+<a class="btn btn-outline-light" name="Basket" href="/admin/basket">Корзины</a>
+<a class="btn btn-outline-light" name="Apartment" href="/admin/apartment">Апартаменты</a>
+<a class="btn btn-outline-light" name="Image" href="/admin/image">Изображения</a>
+<a class="btn btn-outline-light" name="Country" href="/admin/country">Страны</a>
+<a class="btn btn-outline-light" name="City" href="/admin/country">Города</a>
+<a class="btn btn-outline-light" name="Comfort" href="/admin/comfort">Комфорты апартаментов</a>
+<a class="btn btn-outline-light" name="Type" href="/admin/type">Типы апартаментов</a>
 </body>
 

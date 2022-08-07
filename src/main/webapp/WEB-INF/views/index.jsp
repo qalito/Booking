@@ -126,16 +126,25 @@
 </div>
 <h5>Популярные города:</h5>
 <div class="card-group">
-    <c:forEach var="city" items="${listCity}">
-        <div class="card" style="width: 18rem;">
-            <img src="/getImages/${city.image.id}" alt="${city.image.name}">
-            <div class="card-body">
-                <h5 class="card-title">${city.name}</h5>
-                <p class="card-text">${city.description}</p>
-                <a href="/" class="btn btn-primary">Поиск по введенным данным</a>
+<c:forEach var="city" items="${listCity}" varStatus="status">
+    <c:if test="${status.count%2==0}">
+    </c:if>
+    <div class="card-group">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 31rem;">
+                    <img  src="/getImages/${city.image.id}" alt="${city.image.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${city.name}</h5>
+                        <p class="card-text">${city.description}</p>
+                        <a href="/" class="btn btn-primary">Поиск по введенным данным</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </c:forEach>
-</div>
+    </div>
+    <c:if test="${status.count%2==0}">
+    </c:if>
+</c:forEach>
 </div>
 </body>
