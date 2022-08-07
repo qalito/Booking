@@ -6,6 +6,8 @@ import com.tosya.may.booking.repository.BasketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class BasketService {
     @Autowired
@@ -27,5 +29,8 @@ public class BasketService {
     public void save(Basket basket) {
         basketRepository.save(basket);
         //basketRepository.sa
+    }
+    public void deleteByCheckoutTimeBefore(){
+        basketRepository.deleteByCheckoutTimeBefore(LocalDateTime.now());
     }
 }

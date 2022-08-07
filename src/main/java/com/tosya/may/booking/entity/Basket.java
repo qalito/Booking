@@ -21,11 +21,6 @@ public class Basket {
     private LocalDateTime checkoutTime;
     private LocalDate dateStart;
     private LocalDate dateTo;
-    @Cascade({
-            org.hibernate.annotations.CascadeType.SAVE_UPDATE,
-            org.hibernate.annotations.CascadeType.MERGE,
-            org.hibernate.annotations.CascadeType.PERSIST
-    })
     @ManyToMany
     @JoinTable(
             name = "basket_apartment",
