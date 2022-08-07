@@ -2,28 +2,10 @@ package com.tosya.may.booking.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Set;
 
-
-
-/*@NamedNativeQuery() Query(name = "Apartment.getApartmentByComfort",
-        query = "   SELECT * from  apartment a "  +
-        " left join Apartment.apartmentComfort comfort" +
-         "  ON a.id = comfort.id "+
-         " WHERE a.address.city=:city " +
-         "and a.type=:type " +
-         "and a.bookings " +
-         "not in " +
-         "(select b " +
-         "from Booking b" +
-         " where " +
-         "(b.dateStart between :dateSt and :dateTo) " +
-         "and " +
-         "(b.dateTo between :dateSt and :dateTo))*/
 @NamedNativeQueries({@NamedNativeQuery(
         name  = "Apartment.getApartmentByComfort",
         query = "SELECT distinct a.* " +

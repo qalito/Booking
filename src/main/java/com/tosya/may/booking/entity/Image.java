@@ -2,9 +2,7 @@ package com.tosya.may.booking.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
-import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.util.Set;

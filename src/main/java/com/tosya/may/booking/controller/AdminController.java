@@ -5,8 +5,6 @@ import com.tosya.may.booking.entity.User;
 import com.tosya.may.booking.service.BookingService;
 import com.tosya.may.booking.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -2,13 +2,10 @@ package com.tosya.may.booking.service;
 
 import com.tosya.may.booking.entity.Apartment;
 import com.tosya.may.booking.entity.City;
-import com.tosya.may.booking.entity.Comfort;
 import com.tosya.may.booking.entity.Type;
 import com.tosya.may.booking.repository.ApartmentRepository;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;

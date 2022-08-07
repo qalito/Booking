@@ -2,10 +2,8 @@ package com.tosya.may.booking.repository;
 
 import com.tosya.may.booking.entity.Apartment;
 import com.tosya.may.booking.entity.City;
-import com.tosya.may.booking.entity.Comfort;
 import com.tosya.may.booking.entity.Type;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;

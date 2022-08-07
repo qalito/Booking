@@ -33,7 +33,7 @@
         </div>
     </div>
 </c:forEach>
-<form action="/confirm/basket/${basket.id}" method="post">
+<form action="/create/booking/basket/${basket.id}" method="post">
     <button class="btn btn-primary">Подтвердить бронирование</button>
 </form>
 <form action="/confirm/cancel/basket/${basket.id}" method="post">
