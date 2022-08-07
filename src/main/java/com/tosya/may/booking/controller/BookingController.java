@@ -33,12 +33,12 @@ public class BookingController {
         }
         return "/confirm";
     }
-    @PostMapping(value = "/confirm/basket/${basketId}")
+    @PostMapping(value = "/confirm/basket/{basketId}")
     public String confirmBasket(ModelMap model, @PathVariable("basketId") int basket){
         bookingService.addBooking(basket);
         return "/";
     }
-    @PostMapping(value = "/confirm/cancel/basket/${basketId}")
+    @PostMapping(value = "/confirm/cancel/basket/{basketId}")
     public String canselBasket(ModelMap model, @PathVariable("basketId") int basket){
 
         return "/";
