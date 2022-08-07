@@ -24,6 +24,10 @@ public class ApartmentService {
     @Autowired
     private CityService cityService;
 
+    public Apartment getById(int id) {
+        return apartmentRepository.getById(id);
+    }
+
     public List<Apartment> getAll() {
         return (List<Apartment>) apartmentRepository.findAll();
     }

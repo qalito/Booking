@@ -13,7 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class Booking {
-    @Id
+    @Id   @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String number;
     private LocalDateTime dateBooking;

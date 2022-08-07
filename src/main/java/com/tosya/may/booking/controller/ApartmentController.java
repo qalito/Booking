@@ -1,5 +1,6 @@
 package com.tosya.may.booking.controller;
 
+import com.tosya.may.booking.entity.Apartment;
 import com.tosya.may.booking.entity.City;
 import com.tosya.may.booking.entity.Comfort;
 import com.tosya.may.booking.entity.Type;
@@ -28,24 +29,26 @@ public class ApartmentController {
     @Autowired
     private ComfortService comfortService;
 
-    @GetMapping("/searchresults")
+   /* @GetMapping("/searchresults")
     public String getAll(ModelMap model) {
         model.addAttribute("listFilter", typeService.getFilter());
         model.addAttribute("listComfort", comfortService.getComfort());
         model.addAttribute("listCity", cityService.getAll());
-        model.addAttribute("listApartments", apartmentService.getAll());
+        List<Apartment> listApartments = apartmentService.getAll();
+        model.addAttribute("listApartments", listApartments);
+        model.addAttribute("countApartments", listApartments.size());
         return "searchresults";
-    }
+    }*/
 
-    @PostMapping(value = "/searchresults")
+    @GetMapping(value = "/searchresults")
     public String getAllByFilterAndComfort(ModelMap model, @RequestParam Map<String, String> body) {
         model.addAttribute("listFilter", typeService.getFilter());
         model.addAttribute("listComfort", comfortService.getComfort());
         model.addAttribute("listCity", cityService.getAll());
-        model.addAttribute("listApartments",apartmentService.getAllBy(body));
-       // System.out.println(apartmentService.getAllBy().toString());
-    //    model.addAttribute("listApartments",apartmentService.getAll());
-        return"searchresults";
-}
+        List<Apartment> listApartments = apartmentService.getAllBy(body);
+        model.addAttribute("listApartments", listApartments);
+        model.addAttribute("countApartments", listApartments.size());
+        return "searchresults";
+    }
 
 }

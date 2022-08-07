@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Address {
-    @Id
+    @Id   @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @ManyToOne
     @JoinColumn(name = "city_id")

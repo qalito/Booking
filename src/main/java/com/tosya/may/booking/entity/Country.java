@@ -12,6 +12,7 @@ import java.util.Set;
 @Setter
 public class Country {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String description;

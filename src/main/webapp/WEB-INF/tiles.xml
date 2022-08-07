@@ -46,5 +46,9 @@
         <put-attribute name="title" value="Account_edit"/>
         <put-attribute name="body" value="/WEB-INF/views/account_edit.jsp"/>
     </definition>
+    <definition name="adminPage" extends="base.definition.center">
+        <put-attribute name="title" value="admin"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/adminPage.jsp"/>
+    </definition>
     <!-- ContactUs Page -->
 </tiles-definitions>

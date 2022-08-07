@@ -16,7 +16,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
 
 <body>
-<div name="chooseInfo" style="width: 100%">
+<div name="chooseInfo" style="width: 100%; background: #FFE87C;">
     <div class="input-group mb">
         <div class="input-group-prepend">
             <label class="input-group-text">Заезд - Выезд</label>
@@ -29,8 +29,8 @@
         </div>
     </div>
 </div>
-<form id="searchForm" method="post" action="/searchresults" content="">
-    </div>
+<form id="searchForm" method="get" action="/searchresults" content="">
+    <div style="background: #FFCD00;">
     <select class="custom-select" id="inputGroupSelect01" autocomplete="on" required>
         <option disabled selected hidden value="">Куда хотите отправиться?</option>
         <c:forEach var="city" items="${listCity}">
@@ -47,6 +47,7 @@
         <div class="input-group-prepend">
             <button class="btn btn-outline-secondary" type="submit">Поиск</button>
         </div>
+    </div>
     </div>
     <div>Сортировка:</div>
     <select class="custom-select" id="orderInput" autocomplete="on" required>

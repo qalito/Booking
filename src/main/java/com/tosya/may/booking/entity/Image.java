@@ -15,6 +15,7 @@ import java.util.Set;
 public class Image {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     private String name;

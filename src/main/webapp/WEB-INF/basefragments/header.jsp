@@ -43,7 +43,7 @@
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
             <div class="dropdown"  style="float:right;">
-                <a class="btn btn-outline-light" class="btn btn-outline-light" id="dropdownMenu1" data-toggle="dropdown" >Профиль
+                    <a class="btn btn-outline-light" class="btn btn-outline-light" id="dropdownMenu1" data-toggle="dropdown" >Профиль
                     <span class="badge badge-pill badge-success">${pageContext.request.userPrincipal.name}</span>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <a class="btn btn-light" href="/account">Аккаунт</a>
@@ -53,7 +53,7 @@
             </div>
                 <a class="btn btn-outline-light" name="SignOut" href="/logout"><spring:message
                         code="app.header.signOut"/></a>
-
+                <a class="btn btn-outline-light" name="Admin" href="/admin">Admin</a>
             </sec:authorize>
         </div>
     </div>
