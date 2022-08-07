@@ -16,7 +16,7 @@
 <body>
 <c:forEach var="apartment" items="${listApartments}">
     <form action="/confirm" method="post">
-        <input type="hidden" name="apartment" value="${apartment}">
+        <input type="hidden" name="apartment" value="${apartment.id}">
         <div class="card" style="width: 69rem;">
             <h5 class="card-title">${apartment.name}</h5>
             <img class="card-img-bottom" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">

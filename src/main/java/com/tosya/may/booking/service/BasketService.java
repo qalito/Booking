@@ -20,6 +20,9 @@ public class BasketService {
             return new Basket();
         }
     }
+    public Basket getById(int id){
+        return basketRepository.getById(id);
+    }
 
     public void save(Basket basket) {
         basketRepository.save(basket);
