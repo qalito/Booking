@@ -14,6 +14,7 @@
     <title>Апартаменты</title>
 </head>
 <body>
+"Выбран город ${selectedCityId} с ${dateStart} по ${dateTo}. Количество человек ${count}".
 <c:forEach var="apartment" items="${listApartments}">
     <form action="/confirm" method="post">
         <input type="hidden" name="apartment" value="${apartment.id}">
@@ -32,6 +33,8 @@
                 <c:forEach var="comfort" items="${apartment.apartmentComfort}">
                     ${comfort.name};
                 </c:forEach>
+                <input type="hidden" name="dateStart" value="${dateStart}">
+                <input type="hidden" name="dateTo" value="${dateTo}">
                 <button class="btn btn-primary">Забронировать</button>
             </div>
         </div>

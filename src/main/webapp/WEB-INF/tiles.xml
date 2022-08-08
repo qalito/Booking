@@ -46,13 +46,25 @@
         <put-attribute name="title" value="Account_edit"/>
         <put-attribute name="body" value="/WEB-INF/views/account_edit.jsp"/>
     </definition>
-    <definition name="adminPage" extends="base.definition.center">
+    <definition name="admin" extends="base.definition.center">
         <put-attribute name="title" value="admin"/>
-        <put-attribute name="body" value="/WEB-INF/views/admin/adminPage.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin.jsp"/>
     </definition>
     <definition name="confirm" extends="base.definition.center">
         <put-attribute name="title" value="confirm"/>
         <put-attribute name="body" value="/WEB-INF/views/confirm.jsp"/>
+    </definition>
+    <definition name="admin/allUsers" extends="base.definition.center">
+        <put-attribute name="title" value="allUsers"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin/allUsers.jsp"/>
+    </definition>
+    <definition name="booking" extends="base.definition.center">
+        <put-attribute name="title" value="booking"/>
+        <put-attribute name="body" value="/WEB-INF/views/booking.jsp"/>
+    </definition>
+    <definition name="basket" extends="base.definition.center">
+        <put-attribute name="title" value="basket"/>
+        <put-attribute name="body" value="/WEB-INF/views/basket.jsp"/>
     </definition>
     <!-- ContactUs Page -->
 </tiles-definitions>

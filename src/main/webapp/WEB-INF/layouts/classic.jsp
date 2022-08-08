@@ -11,7 +11,9 @@
 <head>
     <title><tiles:getAsString name="title" /></title>
 </head>
-
+<head>
+    <title><tiles:getAsString name="title" /></title>
+</head>
 <body>
 <table width="100%">
     <tr>

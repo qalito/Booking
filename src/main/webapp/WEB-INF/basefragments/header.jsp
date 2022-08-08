@@ -33,6 +33,7 @@
                 <a class="dropdown-item" href="?lang=en"><spring:message code="app.lang.english"/></a>
                 <a class="dropdown-item" href="?lang=ru"><spring:message code="app.lang.russian"/></a>
             </div>
+            <a class="btn btn-outline-light" name="Main" href="/">На главную</a>
             <sec:authorize access="!isAuthenticated()">
                 <a class="btn btn-outline-light" name="RegisterAsPartner" href="/register?role=PARTNER"><spring:message
                         code="app.header.registerPartner"/></a>
@@ -47,13 +48,14 @@
                     <span class="badge badge-pill badge-success">${pageContext.request.userPrincipal.name}</span>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <a class="btn btn-light" href="/account">Аккаунт</a>
-                        <a class="btn btn-light" href="/booking">Бронирования</a>
+                        <a class="btn btn-light" href="/users/${pageContext.request.userPrincipal.name}/booking">Бронирования</a>
+                        <a class="btn btn-light" href="/users/${pageContext.request.userPrincipal.name}/apartment">Апартаменты</a>
                     </div>
                 </a>
             </div>
                 <a class="btn btn-outline-light" name="SignOut" href="/logout"><spring:message
                         code="app.header.signOut"/></a>
-                <a class="btn btn-outline-light" name="Admin" href="/admin">Admin</a>
+                <a class="btn btn-outline-light" name="Admin" href="/admin">Администрирование</a>
             </sec:authorize>
         </div>
     </div>

@@ -36,7 +36,7 @@
 <form action="/create/booking/basket/${basket.id}" method="post">
     <button class="btn btn-primary">Подтвердить бронирование</button>
 </form>
-<form action="/confirm/cancel/basket/${basket.id}" method="post">
+<form action="/confirm/cancel/basket/${basket.id}" method="get">
     <button class="btn btn-primary">Очистить корзину бронирований</button>
 </form>
 </body>

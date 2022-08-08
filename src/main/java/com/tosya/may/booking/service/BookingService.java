@@ -23,13 +23,11 @@ public class BookingService {
     @Autowired
     private BasketService basketService;
 
-
-
     public List<Booking> returnAllBookingByUsername(String username) {
         return bookingRepository.findBookingsByUser(userService.getUser(username));
     }
 
-    public List<Booking> returnAllOrders() {
+    public List<Booking> returnAllBooking() {
         return bookingRepository.findAll();
     }
 
@@ -40,20 +38,28 @@ public class BookingService {
     public Booking addBooking(int basketId) {
         Basket basket = basketService.getById(basketId);
         Booking booking = new Booking();
-        Set<Apartment> apartments = basket.getBasketApartment();
+        Set<Apartment> apartments = new HashSet<>();
+        apartments.addAll(basket.getBasketApartment());
         booking.setBookingApartment(apartments);
         booking.setNumber(randomAlphabetic(6).toLowerCase());
         booking.setDateStart(basket.getDateStart());
         booking.setDateTo(basket.getDateTo());
         booking.setDateBooking(LocalDateTime.now());
-        double sum = 0, count = Period.between(basket.getDateStart(), basket.getDateTo()).getDays();
+        double sum = 0, count = Period.between(basket.getDateStart(), basket.getDateTo()).getDays()+1;
         sum = apartments
                 .stream()
                 .mapToDouble(apartment -> apartment.getPrice().doubleValue())
                 .sum() * count;
         booking.setTotal(BigDecimal.valueOf(sum));
         booking.setUser(userService.getAuthenticationUser());
+        System.out.println(booking);
         bookingRepository.save(booking);
         return booking;
+    }
+    public List<Booking> findBookingByUsername(String username){
+        return bookingRepository.findBookingsByUser(userService.getUser(username));
+    }
+    public void deleteById(int id){
+        bookingRepository.deleteById(id);
     }
 }

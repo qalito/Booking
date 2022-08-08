@@ -1,4 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!DOCTYPE html>
@@ -12,26 +13,27 @@
 <sec:authorize access="isAuthenticated()">
         <% response.sendRedirect("/"); %>
 </sec:authorize>
-<head>
-    <title>Spring Security Example</title>
-</head>
 <body>
-<div if="${param.error}">
-    <p text="${session.error}" unless="${session == null}"></p>
+<div style="text-align: center;">
+    <div if="${param.error}">
+        <p text="${session.error}" unless="${session == null}"></p>
+    </div>
+    <div  style="float: left;">
+        <img src="${pageContext.request.contextPath}/image/draw2.svg"></div>
+
+    <form action="/login" method="post">
+        <h2>Log in with your account</h2>
+        <div>
+            <label> User Name : <input type="text" name="username"/> </label>
+        </div>
+        <div>
+            <label> Password: <input type="password" name="password"/> </label>
+        </div>
+        <button class="btn btn-primary" type="submit"/>
+        Войти</button>
+        <a class="btn btn-primary" name="RegisterAsPartner" href="/register?role=User"><spring:message
+                code="app.header.register"/></a>
+    </form>
 </div>
-<div if="${param.logout}">You have been logged out.</div>
-<form action="/login" method="post">
-    <div>
-        <label> User Name : <input type="text" name="username"/> </label>
-    </div>
-    <div>
-        <label> Password: <input type="password" name="password"/> </label>
-    </div>
-    <div>
-        <input type="submit" value="Sign In"/></div>
-</form>
-<form action="/register" method="get">
-    <input type="submit" value="Register"/></div>
-</form>
 </body>
 </html>

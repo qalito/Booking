@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -35,17 +37,37 @@ public class UserController {
     }
 
     @PostMapping("/account/edit")
-    public String editUser(@RequestParam Map<String, String> body) {
-        User user = userService.getAuthenticationUser();
+    public String editUser(ModelMap model, @RequestParam Map<String, String> body) {
+        User user = setUser(userService.getAuthenticationUser(), body);
+        userService.save(user);
+        model.addAttribute("user", userService.getAuthenticationUser());
+        return "redirect:/account";
+    }
+
+    @PostMapping("/user/{username}/edit")
+    public String editUserAdmin(ModelMap model, @RequestParam Map<String, String> body) {
+        User user = setUser(userService.getUser(body.get("username")), body);
+        userService.save(user);
+        model.addAttribute("user", user);
+        return "redirect:/account";
+    }
+
+    private User setUser(User user, Map<String, String> body) {
         user.setName(body.get("name"));
         user.setEmail(body.get("email"));
         user.setPhoneNumber(body.get("phoneNumber"));
-        user.setGender(body.get("gender").equals("female")? User.Gender.FEMALE:User.Gender.MALE);
+        user.setGender(body.get("gender").equals("female") ? User.Gender.FEMALE : User.Gender.MALE);
         user.setDateOfBirth(LocalDate.parse(body.get("dateOfBirth")));
-        user.setRole(roleService.getRoleByName("USER"));
+        user.setRole(roleService.getRoleByName(body.get("role")));
         user.setRegDate(LocalDateTime.now());
         user.setAccountNonLocked(true);
-        userService.save(user);
+        return user;
+    }
+
+    @GetMapping("/user/{username}")
+    public String getUserInfoByUsername(ModelMap model, @PathVariable("username") String username) {
+        model.addAttribute("user", userService.getUser(username));
+        System.out.println(userService.getAuthenticationUser());
         return "account";
     }
 }

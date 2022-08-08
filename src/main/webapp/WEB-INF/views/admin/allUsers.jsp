@@ -23,7 +23,7 @@
             border-top: 1px solid #777777;
             border-bottom: 1px solid #777777;
             box-shadow: inset 0 1px 0 #999999, inset 0 -1px 0 #999999;
-            background: linear-gradient(#9595b6, #263238);
+            background: linear-gradient(#2E70CD,#2E77CD);
             color: white;
             padding: 10px 15px;
             position: relative;
@@ -77,11 +77,10 @@
     </style>
 </head>
 <body>
-<h3 align="center">Все пользователи системы</h3>
+
 <div class="dropdown">
-    <div class="container mt-5">
+    <h3 align="center">Все пользователи системы</h3>
         <table border="1" cellpadding="10" class="table_blur" align="center">
-            <caption>"000000"</caption>
             <tr>
                 <th>Имя:</th>
                 <th>Дата рождения:</th>
@@ -106,8 +105,8 @@
                     <td><c:out value="${el.role.name}"/></td>
                     <td><c:out value="${el.accountNonLocked}"/></td>
                     <td><c:out value="${el.regDate}"/></td>
-                    <td><a href="/users/${el.username}/booking" class="btn btn-secondary">Orders</a></td>
-                    <td><a href="/users/${el.username}" class="btn btn-primary">Page</a></td>
+                    <td><a href="/users/${el.username}/booking" class="btn btn-secondary">Бронирования</a></td>
+                    <td><a href="/user/${el.username}" class="btn btn-primary">Пользователь</a></td>
                 </tr>
             </c:forEach>
         </table>

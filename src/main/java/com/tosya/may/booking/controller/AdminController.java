@@ -3,6 +3,8 @@ package com.tosya.may.booking.controller;
 import com.tosya.may.booking.entity.Booking;
 import com.tosya.may.booking.entity.User;
 import com.tosya.may.booking.service.BookingService;
+import com.tosya.may.booking.service.CityService;
+import com.tosya.may.booking.service.CountryService;
 import com.tosya.may.booking.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,12 +19,15 @@ public class AdminController {
     private UserService userService;
     @Autowired
     private BookingService bookingService;
+    @Autowired
+    private CountryService countryService;
+    @Autowired
+    private CityService cityService;
     @GetMapping("/admin")
     public String adminPage(Model model) {
         User user = userService.getAuthenticationUser();
-        model.addAttribute("currentUser", user);
-        return "/admin/adminPage";
-
+        model.addAttribute("user", user);
+        return "admin";
     }
     @GetMapping("/admin/users")
     public String allUsers(Model model) {
@@ -30,29 +35,15 @@ public class AdminController {
         model.addAttribute("users", users);
         return "admin/allUsers";
     }
-
-    @GetMapping("/users/{username}/page")
-    public String userPage(Model model, @PathVariable("username") String username) {
-        User user = userService.getUser(username);
-        model.addAttribute("user", user);
-        return "admin/userPage";
+    @GetMapping("/admin/country")
+    public String allCountries(Model model) {
+        model.addAttribute("listCountry", countryService.getAll());
+        return "admin/allCountry";
     }
-
-
-
-    @GetMapping("/users/{username}/booking")
-    public String getUserOrders(Model model, @PathVariable("username") String username) {
-        List<Booking> booking = bookingService.returnAllBookingByUsername(username);
-        model.addAttribute("booking", booking);
-        return "user/bookingHistory";
-    }
-
-
-    @GetMapping("/allBooking")
-    public String getAllOrders(Model model) {
-        List<Booking> booking = bookingService.returnAllOrders();
-        model.addAttribute("orders", booking);
-        return "admin/allBooking";
+    @GetMapping("/admin/city")
+    public String allCites(Model model) {
+        model.addAttribute("listCity", cityService.getAll());
+        return "admin/allCity";
     }
 
     @GetMapping("/booking/{id}")

@@ -5,13 +5,26 @@
   Time: 23:05
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <body>
+<div style="background: #2E77CD; height: 50px; border: 5px solid #2E77CD;">
+    <a class="btn btn-outline-light" name="Users" href="/admin/users">Пользователи</a>
+    <a class="btn btn-outline-light" name="Booking" href="/allBooking">Бронирования</a>
+    <a class="btn btn-outline-light" name="Basket" href="/admin/basket">Корзины</a>
+    <a class="btn btn-outline-light" name="Apartment" href="/admin/apartment">Апартаменты</a>
+    <a class="btn btn-outline-light" name="Image" href="/admin/image">Изображения</a>
+    <a class="btn btn-outline-light" name="Country" href="/admin/country">Страны</a>
+    <a class="btn btn-outline-light" name="City" href="/admin/city">Города</a>
+    <a class="btn btn-outline-light" name="Comfort" href="/admin/comfort">Комфорты апартаментов</a>
+    <a class="btn btn-outline-light" name="Type" href="/admin/type">Типы апартаментов</a>
+</div>
 <style>
     .table_blur {
         margin-left: auto;
@@ -116,14 +129,6 @@
         <td>Пол, укажите ваш пол.</td>
         <td>${user.gender}</td>
     </tr>
-    <tr>
-        <td></td>
-        <td>
-            <form action="/account/edit" method="get">
-                <button class="btn btn-outline-secondary" type="submit">Редактировать</button>
-            </form>
-        </td>
-    </tr>
 </table>
 </body>
-</html>
+

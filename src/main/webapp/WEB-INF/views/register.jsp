@@ -15,6 +15,8 @@
 </head>
 <body>
 <form action="/register" method="post">
+    <div  style="float: left;">
+        <img src="${pageContext.request.contextPath}/image/draw2.svg"></div>
     <div class="container">
         <h1>Register</h1>
         <p>Please fill in this form to create an account.</p>
@@ -65,7 +67,11 @@
             <label for="password"><b>Password:</b></label>
             <input type="password" placeholder="Enter Password" name="password" id="password" required>
         </div>
-        <button type="submit" class="registerbtn">Register</button>
+        <%
+            String role = request.getParameter ("role"); // Получить его с запросом
+        %>
+        <input type="hidden"  name="role" value="${param.role}">
+        <button class="btn btn-primary" type="submit" class="registerbtn">Register</button>
     </div>
 </form>
 </body>

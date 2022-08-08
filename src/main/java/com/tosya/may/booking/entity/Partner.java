@@ -10,7 +10,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class Partner {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     @OneToOne

@@ -23,6 +23,7 @@ public class ApartmentController {
 
     @GetMapping(value = "/searchresults")
     public String getAllByFilterAndComfort(ModelMap model, @RequestParam Map<String, String> body) {
+        model.addAllAttributes(body);
         model.addAttribute("listFilter", typeService.getFilter());
         model.addAttribute("listComfort", comfortService.getComfort());
         model.addAttribute("listCity", cityService.getAll());

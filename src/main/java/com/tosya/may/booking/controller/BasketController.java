@@ -1,15 +1,18 @@
 package com.tosya.may.booking.controller;
 
+import com.tosya.may.booking.entity.Basket;
 import com.tosya.may.booking.entity.User;
 import com.tosya.may.booking.service.BasketService;
 import com.tosya.may.booking.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -27,12 +30,18 @@ public class BasketController {
         else {
             return "redirect:/login";
         }
-        return "/confirm";
+        return "confirm";
     }
 
-    @PostMapping(value = "/confirm/cancel/basket/{basketId}")
+    @GetMapping(value = "/confirm/cancel/basket/{basketId}")
     public String canselBasket(ModelMap model, @PathVariable("basketId") int basket) {
         basketService.deleteById(basket);
-        return "/";
+        return "redirect:/searchresults";
+    }
+
+    @GetMapping(value = "/admin/basket")
+    public String getAll(ModelMap model) {
+        model.addAttribute("basketList", basketService.getAll());
+       return "basket";
     }
 }

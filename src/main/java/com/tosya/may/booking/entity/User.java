@@ -16,7 +16,6 @@ import java.util.Set;
 @Setter
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String username;
     private String password;
     private static final long serialVersionUID = 1L;
