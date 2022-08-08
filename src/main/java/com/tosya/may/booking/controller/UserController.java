@@ -1,6 +1,8 @@
 package com.tosya.may.booking.controller;
 
+import com.tosya.may.booking.entity.Image;
 import com.tosya.may.booking.entity.User;
+import com.tosya.may.booking.repository.ImageRepository;
 import com.tosya.may.booking.service.RoleService;
 import com.tosya.may.booking.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
-    RoleService roleService;
+    private RoleService roleService;
 
     @GetMapping("/account")
     public String getUserInfo(ModelMap model) {

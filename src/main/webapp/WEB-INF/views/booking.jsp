@@ -82,6 +82,7 @@
     <h3 align="center">Бронирования</h3>
         <table border="1" cellpadding="10" class="table_blur" align="center">
             <tr>
+                <th>Апартаменты:</th>
                 <th>Номер бронирования:</th>
                 <th>Дата бронирования:</th>
                 <th>Бронь с:</th>
@@ -92,6 +93,28 @@
             </tr>
             <c:forEach var="el" items="${bookings}">
                 <tr>
+                    <td>  <c:forEach var="apartment" items="${el.bookingApartment}">
+                        <input type="hidden" name="apartment" value="${apartment}">
+                        <div class="card" style="width: 40rem;">
+                            <h5 class="card-title">${apartment.name}</h5>
+                            <img class="card-img-bottom"  style="width: 40rem;" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
+                            <div class="card-body">
+                                <p class="card-text">Название: ${apartment.type.name}</p>
+                                <p class="card-text">Город: ${apartment.address.city.name}</p>
+                                <p class="card-text">Страна: ${apartment.address.country.name}</p>
+                                <p class="card-text">Адрес: ${apartment.address.value}</p>
+                                <p class="card-text">Вместимость: ${apartment.capacity}</p>
+                                <p class="card-text">Стоимость: ${apartment.price}</p>
+                                <p class="card-text">Рейтинг:${apartment.rating}</p>
+                                <p class="card-text">Владелец: Пользователь ${apartment.partner.user.username}, ${apartment.partner.user.name} </p>
+                                <p class="card-text">Связь с владельцем: Телефон ${apartment.partner.user.phoneNumber} Почта ${apartment.partner.user.email}</p>
+                                Список удобств:
+                                <c:forEach var="comfort" items="${apartment.apartmentComfort}">
+                                    ${comfort.name};
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </c:forEach></td>
                     <td><c:out value="${el.number}"/></td>
                     <td><c:out value="${el.dateBooking}"/></td>
                     <td><c:out value="${el.dateStart}"/></td>
@@ -103,28 +126,8 @@
             </tr>
             <tr>
                 <td>
-                <c:forEach var="apartment" items="${el.bookingApartment}">
-                    <input type="hidden" name="apartment" value="${apartment}">
-                    <div class="card" style="width: 40rem;">
-                        <h5 class="card-title">${apartment.name}</h5>
-                        <img class="card-img-bottom"  style="width: 40rem;" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
-                        <div class="card-body">
-                            <p class="card-text">Название: ${apartment.type.name}</p>
-                            <p class="card-text">Город: ${apartment.address.city.name}</p>
-                            <p class="card-text">Страна: ${apartment.address.country.name}</p>
-                            <p class="card-text">Адрес: ${apartment.address.value}</p>
-                            <p class="card-text">Вместимость: ${apartment.capacity}</p>
-                            <p class="card-text">Стоимость: ${apartment.price}</p>
-                            <p class="card-text">Рейтинг:${apartment.rating}</p>
-                            <p class="card-text">Владелец: Пользователь ${apartment.partner.user.username}, ${apartment.partner.user.name} </p>
-                            <p class="card-text">Связь с владельцем: Телефон ${apartment.partner.user.phoneNumber} Почта ${apartment.partner.user.email}</p>
-                            Список удобств:
-                            <c:forEach var="comfort" items="${apartment.apartmentComfort}">
-                                ${comfort.name};
-                            </c:forEach>
-                        </div>
-                    </div>
-                </c:forEach>
+
+
                 </td>
             </tr>
             </c:forEach>

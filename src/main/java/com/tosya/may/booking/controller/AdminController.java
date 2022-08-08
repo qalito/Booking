@@ -33,17 +33,17 @@ public class AdminController {
     public String allUsers(Model model) {
         Iterable<User> users = userService.findAll();
         model.addAttribute("users", users);
-        return "admin/allUsers";
+        return "user";
     }
     @GetMapping("/admin/country")
     public String allCountries(Model model) {
         model.addAttribute("listCountry", countryService.getAll());
-        return "admin/allCountry";
+        return "country";
     }
     @GetMapping("/admin/city")
     public String allCites(Model model) {
         model.addAttribute("listCity", cityService.getAll());
-        return "admin/allCity";
+        return "city";
     }
 
     @GetMapping("/booking/{id}")

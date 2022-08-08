@@ -76,38 +76,41 @@
 <h3 style="text-align: center">Все активные корзины</h3>
 <table border="1" cellpadding="10" class="table_blur" align="center" >
     <c:forEach var="basket" items="${basketList}">
-        <td>
-            <div>Пользователь ${basket.user.username}, ${basket.user.name}</div>
-            <div>Телефон ${basket.user.phoneNumber}, почта ${basket.user.email}</div>
-            <div>Бронь с ${basket.dateStart} по ${basket.dateTo}</div>
-            <div>Корзина уничтожится после ${basket.checkoutTime}</div>
-            <c:forEach var="apartment" items="${basket.basketApartment}">
-                <input type="hidden" name="apartment" value="${apartment}">
-                <div class="card" style="width: 69rem;">
-                    <h5 class="card-title">${apartment.name}</h5>
-                    <img class="card-img-bottom" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
-                    <div class="card-body">
-                        <p class="card-text">Название: ${apartment.type.name}</p>
-                        <p class="card-text">Город: ${apartment.address.city.name}</p>
-                        <p class="card-text">Страна: ${apartment.address.country.name}</p>
-                        <p class="card-text">Адрес: ${apartment.address.value}</p>
-                        <p class="card-text">Вместимость: ${apartment.capacity}</p>
-                        <p class="card-text">Стоимость: ${apartment.price}</p>
-                        <p class="card-text">Рейтинг:${apartment.rating}</p>
-                        Список удобств:
-                        <c:forEach var="comfort" items="${apartment.apartmentComfort}">
-                            ${comfort.name};
-                        </c:forEach>
+        <tr>
+            <td>
+                <div>Пользователь ${basket.user.username}, ${basket.user.name}</div>
+                <div>Телефон ${basket.user.phoneNumber}, почта ${basket.user.email}</div>
+                <div>Бронь с ${basket.dateStart} по ${basket.dateTo}</div>
+                <div>Корзина уничтожится после ${basket.checkoutTime}</div>
+                <c:forEach var="apartment" items="${basket.basketApartment}">
+                    <input type="hidden" name="apartment" value="${apartment}">
+                    <div class="card" style="width: 90rem;">
+                        <h5 class="card-title">${apartment.name}</h5>
+                        <img class="card-img-bottom" src="/getImages/${apartment.image.id}"
+                             alt="${apartment.image.name}">
+                        <div class="card-body">
+                            <p class="card-text">Название: ${apartment.type.name}</p>
+                            <p class="card-text">Город: ${apartment.address.city.name}</p>
+                            <p class="card-text">Страна: ${apartment.address.country.name}</p>
+                            <p class="card-text">Адрес: ${apartment.address.value}</p>
+                            <p class="card-text">Вместимость: ${apartment.capacity}</p>
+                            <p class="card-text">Стоимость: ${apartment.price}</p>
+                            <p class="card-text">Рейтинг:${apartment.rating}</p>
+                            Список удобств:
+                            <c:forEach var="comfort" items="${apartment.apartmentComfort}">
+                                ${comfort.name};
+                            </c:forEach>
+                        </div>
                     </div>
-                </div>
-            </c:forEach>
-            <form action="/create/booking/basket/${basket.id}" method="post">
-                <button class="btn btn-primary">Подтвердить бронирование</button>
-            </form>
-            <form action="/confirm/cancel/basket/${basket.id}" method="get">
-                <button class="btn btn-primary">Очистить корзину бронирований</button>
-            </form>
-        </td>
+                </c:forEach>
+                <form action="/create/booking/basket/${basket.id}" method="post">
+                    <button class="btn btn-primary">Подтвердить бронирование</button>
+                </form>
+                <form action="/confirm/cancel/basket/${basket.id}" method="get">
+                    <button class="btn btn-primary">Очистить корзину бронирований</button>
+                </form>
+            </td>
+        </tr>
     </c:forEach>
 </table>
 </body>

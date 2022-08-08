@@ -40,7 +40,7 @@ public class BasketController {
     }
 
     @GetMapping(value = "/admin/basket")
-    public String getAll(ModelMap model) {
+    public String  getAllBasket(ModelMap model) {
         model.addAttribute("basketList", basketService.getAll());
        return "basket";
     }

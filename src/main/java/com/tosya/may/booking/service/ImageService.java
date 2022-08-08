@@ -6,6 +6,8 @@ import com.tosya.may.booking.repository.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ImageService {
     @Autowired
@@ -15,5 +17,9 @@ public class ImageService {
     }
     public Image setImage(Image image){
         return imageRepository.save(image);
+    }
+
+    public List<Image> findAll() {
+        return imageRepository.findAll();
     }
 }
