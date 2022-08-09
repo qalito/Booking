@@ -102,7 +102,7 @@
                     <td><c:out value="${el.username}"/></td>
                     <td><c:out value="${el.phoneNumber}"/></td>
                     <td><c:out value="${el.email}"/></td>
-                    <td><c:out value="${el.role.name}"/></td>
+                    <td><c:out value="${el.roles}"/></td>
                     <td><c:out value="${el.accountNonLocked}"/></td>
                     <td><c:out value="${el.regDate}"/></td>
                     <td><a href="/users/${el.username}/booking" class="btn btn-secondary"><spring:message code="app.admin.booking"/></a></td>

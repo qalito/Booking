@@ -21,7 +21,7 @@ public class ActionController {
     @Autowired
     private CountryService countryService;
     @Autowired
-    private SecurityUserDetailsService userDetailsManager;
+    private UserService userService;
 
 
     @GetMapping("/")
@@ -49,7 +49,7 @@ public class ActionController {
             MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
     )
     public String addUser(@RequestParam Map<String, String> body) {
-        userDetailsManager.createUser(body);
+        userService.createUser(body);
         return "login";
     }
 

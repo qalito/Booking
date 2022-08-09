@@ -85,7 +85,7 @@
         <span class="badge badge-pill badge-success">${pageContext.request.userPrincipal.name}</span>
     </a>
     </p>
-    <spring:message code="app.account.type"/> ${user.role.name}
+    <spring:message code="app.account.type"/> ${user.roles}
     <table border="1" cellpadding="10" class="table_blur" align="center" width="100%">
         <tr>
             <td><spring:message code="app.account.name"/>

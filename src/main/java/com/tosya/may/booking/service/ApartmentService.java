@@ -95,7 +95,7 @@ public class ApartmentService {
         if (id == -1) {
             apartment = new Apartment();
             apartment.setPartner(userService.getAuthenticationUser().getPartner());
-            apartment.setImage(imageService.getByName("Нет фото"));
+            apartment.setImage(imageService.getByName("Апартаменты без фото"));
         } else {
             apartment = apartmentRepository.getById(Integer.valueOf(body.get("apartment")));
         }

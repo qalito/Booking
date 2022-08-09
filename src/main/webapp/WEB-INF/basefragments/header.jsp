@@ -35,29 +35,42 @@
             </div>
             <a class="btn btn-outline-light" name="Main" href="/"><spring:message code="app.header.main"/></a>
             <sec:authorize access="!isAuthenticated()">
-                <a class="btn btn-outline-light" name="RegisterAsPartner" href="/register?role=PARTNER"><spring:message
+                <a class="btn btn-outline-light" name="RegisterAsPartner"
+                   href="/register?role=ROLE_PARTNER"><spring:message
                         code="app.header.registerPartner"/></a>
-                <a class="btn btn-outline-light" name="Register" href="/register?role=USER"><spring:message
+                <a class="btn btn-outline-light" name="Register" href="/register?role=ROLE_USER"><spring:message
                         code="app.header.register"/></a>
                 <a class="btn btn-outline-light" name="SignIn" href="/login"><spring:message
                         code="app.header.sign"/></a>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
-            <div class="dropdown"  style="float:right;">
-                    <a class="btn btn-outline-light" class="btn btn-outline-light" id="dropdownMenu1" data-toggle="dropdown" ><spring:message code="app.header.profile"/>
-                    <span class="badge badge-pill badge-success">${pageContext.request.userPrincipal.name}</span>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <a class="btn btn-light" href="/account"><spring:message code="app.header.account"/></a>
-                        <a class="btn btn-light" href="/users/${pageContext.request.userPrincipal.name}/booking"><spring:message code="app.header.booking"/></a>
-                        <a class="btn btn-light" href="/users/${pageContext.request.userPrincipal.name}/apartment"><spring:message code="app.header.apartment"/></a>
-                        <a class="btn btn-light" href="/users/${pageContext.request.userPrincipal.name}/apartment"><spring:message code="app.header.apartment"/></a>
-                    </div>
-                </a>
-            </div>
-                <a class="btn btn-outline-light" name="SignOut" href="/logout"><spring:message
-                        code="app.header.signOut"/></a>
-                <a class="btn btn-outline-light" name="Admin" href="/admin"><spring:message code="app.header.admin"/></a>
+                <div class="dropdown" style="float:right;">
+                    <a class="btn btn-outline-light" class="btn btn-outline-light" id="dropdownMenu1"
+                       data-toggle="dropdown"><spring:message code="app.header.profile"/>
+                        <span class="badge badge-pill badge-success">${pageContext.request.userPrincipal.name}</span>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1" style="text-align: left">
+                            <a class="btn btn-light" style="width: 100%" href="/account"><spring:message code="app.header.account"/></a>
+                            <sec:authorize access="hasRole('ADMIN')">
+                                <a class="btn btn-light" style="width: 100%" name="Admin" href="/admin"><spring:message
+                                        code="app.header.admin"/></a>
+                            </sec:authorize>
+                            <sec:authorize access="hasRole('ROLE_USER')">
+                                <a class="btn btn-light" style="width: 100%"
+                                   href="/users/${pageContext.request.userPrincipal.name}/booking"><spring:message
+                                        code="app.header.booking"/></a>
+                            </sec:authorize>
+                            <sec:authorize access="hasRole('ROLE_PARTNER')">
+                                <a class="btn btn-light" style="width: 100%"
+                                   href="/users/${pageContext.request.userPrincipal.name}/apartment"><spring:message
+                                        code="app.header.apartment"/></a>
+                            </sec:authorize>
+                            <a class="btn btn-light" style="width: 100%" name="SignOut" href="/logout"><spring:message
+                                    code="app.header.signOut"/></a>
+                        </div>
+                    </a>
+                </div>
             </sec:authorize>
+
         </div>
     </div>
 </div>

@@ -31,7 +31,7 @@
         </div>
         <button class="btn btn-primary" type="submit"/>
         Войти</button>
-        <a class="btn btn-primary" name="RegisterAsPartner" href="/register?role=User"><spring:message
+        <a class="btn btn-primary" name="RegisterAsPartner" href="/register?role=ROLE_USER"><spring:message
                 code="app.header.register"/></a>
     </form>
 </div>

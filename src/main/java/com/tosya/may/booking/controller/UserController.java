@@ -1,8 +1,7 @@
 package com.tosya.may.booking.controller;
 
-import com.tosya.may.booking.entity.Image;
+import com.tosya.may.booking.entity.Role;
 import com.tosya.may.booking.entity.User;
-import com.tosya.may.booking.repository.ImageRepository;
 import com.tosya.may.booking.service.RoleService;
 import com.tosya.may.booking.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 @Controller
 public class UserController {
@@ -60,7 +61,9 @@ public class UserController {
         user.setPhoneNumber(body.get("phoneNumber"));
         user.setGender(body.get("gender").equals("female") ? User.Gender.FEMALE : User.Gender.MALE);
         user.setDateOfBirth(LocalDate.parse(body.get("dateOfBirth")));
-        user.setRole(roleService.getRoleByName(body.get("role")));
+        Set<Role> role= new HashSet<>();
+        role.add(roleService.getRoleByName(body.get("role")));
+        user.setRoles(role);
         user.setRegDate(LocalDateTime.now());
         user.setAccountNonLocked(true);
         return user;

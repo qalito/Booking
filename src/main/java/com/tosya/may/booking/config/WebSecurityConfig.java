@@ -16,13 +16,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests().antMatchers("/register**")
+                .authorizeRequests()
+                .antMatchers("/","/getImages/**","/login","/register","/searchresults**","/image/**")
                 .permitAll()
-                .antMatchers("/searchresults**").permitAll()
-                //.anyRequest()
-                //.authenticated()
+                //Доступ только для пользователей с ролью Администратор
+                .antMatchers("/admin/**","admin","/admin").hasRole("ADMIN")
+                .antMatchers("/fvg").hasRole("USER")
+                .antMatchers("/fvg").hasRole("PARTNER")
+                .anyRequest()
+                .authenticated()
                 .and()
-                .formLogin() .loginPage("/login")
+                .formLogin()
+                .loginPage("/login")
                 .defaultSuccessUrl("/")
                 .permitAll()
                 .and()

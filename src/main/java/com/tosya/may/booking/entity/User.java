@@ -3,17 +3,21 @@ package com.tosya.may.booking.entity;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
+
 public class User implements UserDetails {
     @Id
     private String username;
@@ -27,50 +31,34 @@ public class User implements UserDetails {
     private String phoneNumber;
     private Gender gender;
     private LocalDateTime regDate;
-    @ManyToOne
-    @JoinColumn(name = "roleId")
-    private Role role;
     @OneToOne(mappedBy = "user")
     private Partner partner;
     @OneToMany(mappedBy = "user")
     private Set<Basket> baskets;
     @OneToMany(mappedBy = "user")
     private Set<Booking> bookings;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role",
+            joinColumns = {
+                    @JoinColumn(name = "user_id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "role_id")})
+    private Set<Role> roles;
     @Transient
     private String passwordConfirm;
 
     public User() {
-    }
 
-    public User(String username, String password, boolean accountNonLocked) {
-        this.username = username;
-        this.password = password;
-        this.accountNonLocked = accountNonLocked;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
+        return getRoles();
     }
 
     @Override
     public boolean isAccountNonExpired() {
         return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return accountNonLocked;
     }
 
     @Override
