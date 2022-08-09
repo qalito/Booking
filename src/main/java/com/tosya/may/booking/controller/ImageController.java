@@ -33,6 +33,7 @@ public class ImageController {
     @PostMapping("/set/image/{id}")
     public String setImage(ModelMap model, @PathVariable("id") int id, @RequestParam Map<String, String> body) {
         imageService.setImage(id,body);
+        imageService.save( imageService.setImage(id,body));
         model.addAttribute("imageList", imageService.findAll());
         return "image";
     }

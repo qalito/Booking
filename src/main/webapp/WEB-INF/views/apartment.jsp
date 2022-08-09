@@ -83,7 +83,8 @@
                 <input type="hidden" name="apartment" value="${apartment}">
                 <div class="card" style="width: 90rem;">
                     <h5 class="card-title">${apartment.name}</h5>
-                    <a href="/booking/apartment/${apartment.id}" class="btn btn-primary"><spring:message code="app.bookingbtn"/></a>
+                    <a href="/booking/apartment/${apartment.id}" class="btn btn-primary"><spring:message
+                            code="app.bookingbtn"/></a>
                     <img class="card-img-bottom" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
                     <div class="card-body" style="text-align: left">
                         <p class="card-text"><spring:message code="app.apartmet.name"/>: ${apartment.type.name}</p>
@@ -106,6 +107,11 @@
                             <c:forEach var="comfort" items="${apartment.apartmentComfort}">
                                 ${comfort.name};
                             </c:forEach>
+                        <form action="/apartment/edit/${apartment.id}" method="post">
+                            <button class="btn btn-primary"><spring:message code="app.edit"/></button>
+                        </form>
+
+
                     </div>
                 </div>
             </td>

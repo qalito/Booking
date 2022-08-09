@@ -21,7 +21,10 @@ public class ImageService {
 
     public Image setImage(int id, Map<String, String> body) {
         Image img = new Image();
+        System.out.println("///");
+        System.out.println( body.get("image")+ body.get("name"));
         try {
+            System.out.println("///");
             String file = "C:\\Users\\tosya\\Desktop\\фото для проекта\\" + body.get("image");
             InputStream in = new FileInputStream(file);
             ByteArrayOutputStream buffer = new ByteArrayOutputStream();
@@ -33,7 +36,9 @@ public class ImageService {
             }
             buffer.flush();
             byte[] targetArray = buffer.toByteArray();
+            System.out.println(targetArray.toString());
             if (id != -1) {
+                System.out.println(body.get("name") );
                 img = new Image(id, body.get("name"), "jpg", targetArray);
             } else {
                 img = new Image(body.get("name"), "jpg", targetArray);
@@ -43,7 +48,7 @@ public class ImageService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return imageRepository.save(img);
+        return img;
     }
 
     public List<Image> findAll() {
@@ -52,5 +57,9 @@ public class ImageService {
 
     public Image getByName(String name) {
         return imageRepository.findFirstByName(name);
+    }
+
+    public void save(Image setImage) {
+        imageRepository.save(setImage);
     }
 }

@@ -80,7 +80,7 @@ public class Apartment {
     @ManyToOne
     @JoinColumn(name = "partner_id")
     private Partner partner;
-    @ManyToOne()
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "image_id")
     private Image image;
     @ManyToMany

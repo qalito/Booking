@@ -82,6 +82,10 @@
                 <img class="card-img-bottom" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
                 <div class="card-body" style="text-align: left">
                     <form action="/apartment/edit/${apartment.id}" method="post">
+                        <div style="text-align: center">
+                            <p> <spring:message code="app.image.url"/>:</p>
+                            <input type="file" name="image">
+                        </div>
                         <input type="hidden" name="apartment" value="${apartment.id}">
                         <p class="card-text"><spring:message code="app.apartmet.name"/>: <input type="text" placeholder="<spring:message code="app.apartmet.name"/>" name="name" id="name"
                                                               value="${apartment.name}" required></p>

@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ApartmentService {
@@ -95,7 +92,6 @@ public class ApartmentService {
         if (id == -1) {
             apartment = new Apartment();
             apartment.setPartner(userService.getAuthenticationUser().getPartner());
-            apartment.setImage(imageService.getByName("Апартаменты без фото"));
         } else {
             apartment = apartmentRepository.getById(Integer.valueOf(body.get("apartment")));
         }
@@ -105,8 +101,18 @@ public class ApartmentService {
             System.out.println(entry.getKey());
             switch (entry.getKey()) {
                 case "lang":
+
                 case "apartment": {
                     break;
+                }
+                case "image":{
+                    Map<String,String> map = new HashMap<>();
+                    System.out.println(body.get("name"));
+                    map.put("name", "Апартамент "+body.get("name").toString());
+                    map.put("image",body.get("image"));
+                    System.out.println(imageService.setImage(id,map));
+                    apartment.setImage(imageService.setImage(id,map));
+                    System.out.println(apartment.getImage());
                 }
                 case "name": {
                     apartment.setName(entry.getValue());

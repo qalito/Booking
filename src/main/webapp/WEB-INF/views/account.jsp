@@ -115,7 +115,6 @@
         <td>${user.gender}</td>
     </tr>
     <tr>
-        <td></td>
         <td>
             <form action="/account/edit" method="get">
                 <button class="btn btn-outline-secondary" type="submit"><spring:message code="app.edit"/></button>
