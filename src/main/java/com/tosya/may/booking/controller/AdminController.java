@@ -2,16 +2,17 @@ package com.tosya.may.booking.controller;
 
 import com.tosya.may.booking.entity.Booking;
 import com.tosya.may.booking.entity.User;
-import com.tosya.may.booking.service.BookingService;
-import com.tosya.may.booking.service.CityService;
-import com.tosya.may.booking.service.CountryService;
-import com.tosya.may.booking.service.UserService;
+import com.tosya.may.booking.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class AdminController {
@@ -23,6 +24,10 @@ public class AdminController {
     private CountryService countryService;
     @Autowired
     private CityService cityService;
+    @Autowired
+    private ComfortService comfortService;
+    @Autowired
+    private TypeService typeService;
     @GetMapping("/admin")
     public String adminPage(Model model) {
         User user = userService.getAuthenticationUser();
@@ -42,14 +47,45 @@ public class AdminController {
     }
     @GetMapping("/admin/city")
     public String allCites(Model model) {
+        model.addAttribute("listCountry", countryService.getAll());
         model.addAttribute("listCity", cityService.getAll());
         return "city";
+    }
+    @GetMapping("/admin/comfort")
+    public String allComfort(Model model) {
+        model.addAttribute("comfort", comfortService.getAll());
+        return "comfort";
+    }
+    @GetMapping("/admin/type")
+    public String allType(Model model) {
+        model.addAttribute("type", typeService.getAll());
+        return "type";
     }
 
     @GetMapping("/booking/{id}")
     public String getOrder(@PathVariable(value = "id") int id, Model model) {
         Booking booking = bookingService.findById(id);
         model.addAttribute("booking", booking);
-        return "";
+        return "booking";
+    }
+    @PostMapping("admin/country/add")
+    public String addCountry(@RequestParam Map<String, String> body){
+        countryService.addCountry(body);
+        return "redirect:/admin/country";
+    }
+    @PostMapping("admin/city/add")
+    public String addCity(@RequestParam Map<String, String> body){
+        cityService.addCity(body);
+        return "redirect:/admin/city";
+    }
+    @PostMapping("/admin/comfort/add")
+    public String addComfort(@RequestParam Map<String, String> body) {
+        comfortService.addComfort(body);
+        return "redirect:/admin/comfort";
+    }
+    @PostMapping("/admin/type/add")
+    public String addType(@RequestParam Map<String, String> body) {
+       typeService.addType(body);
+        return "redirect:/admin/type";
     }
 }

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>Confirm page</title>
@@ -19,14 +20,14 @@
         <h5 class="card-title">${apartment.name}</h5>
         <img class="card-img-bottom" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
         <div class="card-body">
-            <p class="card-text">Название: ${apartment.type.name}</p>
-            <p class="card-text">Город: ${apartment.address.city.name}</p>
-            <p class="card-text">Страна: ${apartment.address.country.name}</p>
-            <p class="card-text">Адрес: ${apartment.address.value}</p>
-            <p class="card-text">Вместимость: ${apartment.capacity}</p>
-            <p class="card-text">Стоимость: ${apartment.price}</p>
-            <p class="card-text">Рейтинг:${apartment.rating}</p>
-            Список удобств:
+            <p class="card-text"><spring:message code="app.apartmet.name"/>: ${apartment.type.name}</p>
+            <p class="card-text"><spring:message code="app.apartmet.city"/>: ${apartment.address.city.name}</p>
+            <p class="card-text"><spring:message code="app.apartmet.country"/>: ${apartment.address.country.name}</p>
+            <p class="card-text"><spring:message code="app.apartmet.address"/>: ${apartment.address.value}</p>
+            <p class="card-text"><spring:message code="app.apartmet.capacity"/>: ${apartment.capacity}</p>
+            <p class="card-text"><spring:message code="app.apartmet.price"/>: ${apartment.price}</p>
+            <p class="card-text"><spring:message code="app.apartmet.raiting"/>:${apartment.rating}</p>
+            <spring:message code="app.apartmet.listComfort"/>:
             <c:forEach var="comfort" items="${apartment.apartmentComfort}">
                 ${comfort.name};
             </c:forEach>
@@ -34,10 +35,10 @@
     </div>
 </c:forEach>
 <form action="/create/booking/basket/${basket.id}" method="post">
-    <button class="btn btn-primary">Подтвердить бронирование</button>
+    <button class="btn btn-primary"><spring:message code="app.basket.confirm"/></button>
 </form>
 <form action="/confirm/cancel/basket/${basket.id}" method="get">
-    <button class="btn btn-primary">Очистить корзину бронирований</button>
+    <button class="btn btn-primary"><spring:message code="app.basket.clear"/></button>
 </form>
 </body>
 </html>

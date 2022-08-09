@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: tosya
@@ -78,10 +79,10 @@
     <c:forEach var="basket" items="${basketList}">
         <tr>
             <td>
-                <div>Пользователь ${basket.user.username}, ${basket.user.name}</div>
-                <div>Телефон ${basket.user.phoneNumber}, почта ${basket.user.email}</div>
-                <div>Бронь с ${basket.dateStart} по ${basket.dateTo}</div>
-                <div>Корзина уничтожится после ${basket.checkoutTime}</div>
+                <div><spring:message code="app.basket.user"/> ${basket.user.username}, ${basket.user.name}</div>
+                <div><spring:message code="app.basket.phone"/> ${basket.user.phoneNumber}, <spring:message code="app.basket.email"/> ${basket.user.email}</div>
+                <div><spring:message code="app.basket.bookingfrom"/> ${basket.dateStart} <spring:message code="app.basket.bookingto"/> ${basket.dateTo}</div>
+                <div><spring:message code="app.basket.destroyed"/> ${basket.checkoutTime}</div>
                 <c:forEach var="apartment" items="${basket.basketApartment}">
                     <input type="hidden" name="apartment" value="${apartment}">
                     <div class="card" style="width: 90rem;">
@@ -89,14 +90,14 @@
                         <img class="card-img-bottom" src="/getImages/${apartment.image.id}"
                              alt="${apartment.image.name}">
                         <div class="card-body">
-                            <p class="card-text">Название: ${apartment.type.name}</p>
-                            <p class="card-text">Город: ${apartment.address.city.name}</p>
-                            <p class="card-text">Страна: ${apartment.address.country.name}</p>
-                            <p class="card-text">Адрес: ${apartment.address.value}</p>
-                            <p class="card-text">Вместимость: ${apartment.capacity}</p>
-                            <p class="card-text">Стоимость: ${apartment.price}</p>
-                            <p class="card-text">Рейтинг:${apartment.rating}</p>
-                            Список удобств:
+                            <p class="card-text"><spring:message code="app.apartmet.name"/>: ${apartment.type.name}</p>
+                            <p class="card-text"><spring:message code="app.apartmet.city"/>: ${apartment.address.city.name}</p>
+                            <p class="card-text"><spring:message code="app.apartmet.country"/>: ${apartment.address.country.name}</p>
+                            <p class="card-text"><spring:message code="app.apartmet.address"/>: ${apartment.address.value}</p>
+                            <p class="card-text"><spring:message code="app.apartmet.capacity"/>: ${apartment.capacity}</p>
+                            <p class="card-text"><spring:message code="app.apartmet.price"/>: ${apartment.price}</p>
+                            <p class="card-text"><spring:message code="app.apartmet.raiting"/>:${apartment.rating}</p>
+                            <spring:message code="app.apartmet.listComfort"/>:
                             <c:forEach var="comfort" items="${apartment.apartmentComfort}">
                                 ${comfort.name};
                             </c:forEach>
@@ -104,10 +105,10 @@
                     </div>
                 </c:forEach>
                 <form action="/create/booking/basket/${basket.id}" method="post">
-                    <button class="btn btn-primary">Подтвердить бронирование</button>
+                    <button class="btn btn-primary"><spring:message code="app.basket.confirm"/></button>
                 </form>
                 <form action="/confirm/cancel/basket/${basket.id}" method="get">
-                    <button class="btn btn-primary">Очистить корзину бронирований</button>
+                    <button class="btn btn-primary"><spring:message code="app.basket.clear"/></button>
                 </form>
             </td>
         </tr>

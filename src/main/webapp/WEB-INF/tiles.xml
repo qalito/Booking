@@ -90,5 +90,13 @@
         <put-attribute name="title" value="apartment"/>
         <put-attribute name="body" value="/WEB-INF/views/apartment.jsp"/>
     </definition>
+    <definition name="comfort" extends="base.definition.center">
+        <put-attribute name="title" value="comfort"/>
+        <put-attribute name="body" value="/WEB-INF/views/comfort.jsp"/>
+    </definition>
+    <definition name="type" extends="base.definition.center">
+        <put-attribute name="title" value="type"/>
+        <put-attribute name="body" value="/WEB-INF/views/type.jsp"/>
+    </definition>
     <!-- ContactUs Page -->
 </tiles-definitions>

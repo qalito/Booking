@@ -79,20 +79,20 @@
 <body>
 
 <div class="dropdown">
-    <h3 align="center">Все пользователи системы</h3>
+    <h3 align="center"><spring:message code="app.user.alluser"/></h3>
         <table border="1" cellpadding="10" class="table_blur" align="center">
             <tr>
-                <th>Имя:</th>
-                <th>Дата рождения:</th>
-                <th>Пол:</th>
-                <th>Логин:</th>
-                <th>Телефон:</th>
-                <th>Email</th>
-                <th>Роль</th>
-                <th>accountNonLocked</th>
-                <th>regDate</th>
-                <th>Orders</th>
-                <th>Action</th>
+                <th><spring:message code="app.user.nameuser"/></th>
+                <th><spring:message code="app.user.dateOfBirth"/></th>
+                <th><spring:message code="app.user.gender"/></th>
+                <th><spring:message code="app.user.username"/></th>
+                <th><spring:message code="app.user.phone"/></th>
+                <th><spring:message code="app.user.email"/></th>
+                <th><spring:message code="app.user.role"/></th>
+                <th><spring:message code="app.user.accountNonLocked"/></th>
+                <th><spring:message code="app.user.regdate"/></th>
+                <th><spring:message code="app.admin.booking"/></th>
+                <th><spring:message code="app.admin.view"/></th>
             </tr>
             <c:forEach var="el" items="${users}">
                 <tr>
@@ -105,8 +105,8 @@
                     <td><c:out value="${el.role.name}"/></td>
                     <td><c:out value="${el.accountNonLocked}"/></td>
                     <td><c:out value="${el.regDate}"/></td>
-                    <td><a href="/users/${el.username}/booking" class="btn btn-secondary">Бронирования</a></td>
-                    <td><a href="/user/${el.username}" class="btn btn-primary">Пользователь</a></td>
+                    <td><a href="/users/${el.username}/booking" class="btn btn-secondary"><spring:message code="app.admin.booking"/></a></td>
+                    <td><a href="/user/${el.username}" class="btn btn-primary"><spring:message code="app.user.name"/></a></td>
                 </tr>
             </c:forEach>
         </table>

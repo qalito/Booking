@@ -24,22 +24,6 @@ public class ImageController {
         response.getOutputStream().flush();
     }
 
-    @GetMapping("/setImage")
-    public void getFile() throws IOException {
-        InputStream in = getClass().getResourceAsStream("/image/img.png");
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        int nRead;
-        byte[] data = new byte[4];
-
-        while ((nRead = in.read(data, 0, data.length)) != -1) {
-            buffer.write(data, 0, nRead);
-        }
-        buffer.flush();
-        byte[] targetArray = buffer.toByteArray();
-        Image img = new Image(2, "Тбилиси 2", "png", targetArray);
-        imageService.setImage(img);
-    }
-
     @GetMapping("/admin/image")
     public String getImage(ModelMap model, @RequestParam Map<String, String> body) {
         model.addAttribute("imageList", imageService.findAll());
@@ -48,26 +32,7 @@ public class ImageController {
 
     @PostMapping("/set/image/{id}")
     public String setImage(ModelMap model, @PathVariable("id") int id, @RequestParam Map<String, String> body) {
-        try {
-            String file="C:\\Users\\tosya\\Desktop\\фото для проекта\\"+body.get("image");
-            InputStream in = new FileInputStream(file);
-            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-            int nRead;
-            byte[] data = new byte[4];
-
-            while ((nRead = in.read(data, 0, data.length)) != -1) {
-                buffer.write(data, 0, nRead);
-            }
-            buffer.flush();
-            byte[] targetArray = buffer.toByteArray();
-            Image img = new Image(id, body.get("name"), "jpg", targetArray);
-            System.out.println("targetArray");
-            imageService.setImage(img);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        imageService.setImage(id,body);
         model.addAttribute("imageList", imageService.findAll());
         return "image";
     }

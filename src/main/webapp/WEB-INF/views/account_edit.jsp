@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: tosya
@@ -77,37 +78,35 @@
     }
 </style>
 <form action="/account/edit" method="post">
-    <h3>Персональные данные</h3>
-    Обновите свои данные и узнайте, как мы их используем.
-
-    Зарегистрированы на сайте с ${user.regDate}
-    <a class="btn btn-outline-light" class="btn btn-outline-light">Профиль
+    <h3><spring:message code="app.account.perconaldata"/></h3>
+    <spring:message code="app.account.updatedata"/>
+    <spring:message code="app.account.register"/> ${user.regDate}
+    <a class="btn btn-outline-light" class="btn btn-outline-light"><spring:message code="app.account.profile"/>
         <span class="badge badge-pill badge-success">${pageContext.request.userPrincipal.name}</span>
     </a>
     </p>
-    Тип аккаунта: ${user.role.name}
+    <spring:message code="app.account.type"/> ${user.role.name}
     <table border="1" cellpadding="10" class="table_blur" align="center" width="100%">
         <tr>
-            <td>Имя, укажите имя, которое будет отображаться на сайте, данное имя отображается для других пользователей,
-                используется для обращения к Вам
+            <td><spring:message code="app.account.name"/>
             </td>
             <td>
                 <div>
                     <label>
-                        <b>Name:</b>
+                        <b><spring:message code="app.user.name"/>:</b>
                     </label>
-                    <input type="text" placeholder="Enter Name" name="name" id="name" value="${user.name}" required>
+                    <input type="text" placeholder="<spring:message code="app.account.enter.name"/>" name="name" id="name" value="${user.name}" required>
                 </div>
             </td>
         </tr>
         <tr>
-            <td>Дата рождения, необходимая системе информация.</td>
+            <td><spring:message code="app.account.dateofbirth"/></td>
             <td>
                 <div>
 
                     <div class="control-group">
                         <label for="dateOfBirth">
-                            <b>dateOfBirth:</b>
+                            <b><spring:message code="app.user.dateOfBirth"/>:</b>
                         </label>
                         <input type="date" id="dateOfBirth" name="dateOfBirth"
                                value="{${user.dateOfBirth}}" pattern="dd.MM.yyyy"
@@ -118,39 +117,39 @@
 
         </tr>
         <tr>
-            <td>Email, адрес может использоваться для информирования пользователей.
+            <td><spring:message code="app.account.email"/>
             </td>
             <td>
                 <div>
                     <label for="email">
-                        <b>Email:</b>
+                        <b><spring:message code="app.user.email"/>:</b>
                     </label>
-                    <input type="text" placeholder="Enter Email" name="email" id="email" value="${user.email}" required>
+                    <input type="text" placeholder="<spring:message code="app.account.enter.email"/>" name="email" id="email" value="${user.email}" required>
                 </div>
             </td>
         </tr>
         <tr>
-            <td>Телефон, укажите ваш номер телефона, сюда могут звонить ваши хозяева жилья/жильцы.
+            <td><spring:message code="app.account.phone"/>
             </td>
             <td>
                 <div>
                     <label for="phoneNumber">
-                        <b>Phone number:</b>
+                        <b><spring:message code="app.user.phone"/>:</b>
                     </label>
-                    <input type="text" placeholder="Enter Phone number" name="phoneNumber" id="phoneNumber" value="${user.phoneNumber}" required>
+                    <input type="text" placeholder="<spring:message code="app.account.enter.phone"/>" name="phoneNumber" id="phoneNumber" value="${user.phoneNumber}" required>
                 </div>
             </td>
 
         </tr>
         <tr>
-            <td>Пол, укажите ваш пол.</td>
+            <td><spring:message code="app.account.gender"/></td>
             <td>
                 <div>
                     <label for="female">
-                        <b>Gender:</b>
+                        <b><spring:message code="app.user.gender"/>:</b>
                     </label>
-                    <input type="radio" name="gender" id="female" value="female" checked/>Female
-                    <input type="radio" name="gender" id="male" value="male"/>Male
+                    <input type="radio" name="gender" id="female" value="female" checked/><spring:message code="app.user.gender.f"/>
+                    <input type="radio" name="gender" id="male" value="male"/><spring:message code="app.user.gender.m"/>
                 </div>
             </td>
         </tr>
@@ -158,7 +157,7 @@
             <td></td>
             <td>
                 <input type="hidden"  name="username" value="${user.username}">
-                <button class="btn btn-outline-secondary" type="submit">Редактировать</button>
+                <button class="btn btn-outline-secondary" type="submit"><spring:message code="app.edit"/></button>
             </td>
         </tr>
     </table>

@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Log in with your account</title>
+    <title><spring:message code="app.login.title"/>Log in with your account</title>
 </head>
 
 <body>
@@ -22,12 +22,12 @@
         <img src="${pageContext.request.contextPath}/image/draw2.svg"></div>
 
     <form action="/login" method="post">
-        <h2>Log in with your account</h2>
+        <h2><spring:message code="app.login.title"/></h2>
         <div>
-            <label> User Name : <input type="text" name="username"/> </label>
+            <label> <spring:message code="app.login.usename"/> : <input type="text" name="username"/> </label>
         </div>
         <div>
-            <label> Password: <input type="password" name="password"/> </label>
+            <label> <spring:message code="app.login.password"/> : <input type="password" name="password"/> </label>
         </div>
         <button class="btn btn-primary" type="submit"/>
         Войти</button>

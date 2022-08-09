@@ -1,17 +1,17 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: tosya
-  Date: 03.08.2022
-  Time: 23:05
+  Date: 08.08.2022
+  Time: 16:39
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>city</title>
 </head>
-
 <body>
 <style>
     .table_blur {
@@ -26,7 +26,7 @@
         border-top: 1px solid #777777;
         border-bottom: 1px solid #777777;
         box-shadow: inset 0 1px 0 #999999, inset 0 -1px 0 #999999;
-        background: linear-gradient(#9595b6, #263238);
+        background: linear-gradient(#2E70CD, #2E77CD);
         color: white;
         padding: 10px 15px;
         position: relative;
@@ -78,50 +78,32 @@
         text-shadow: none;
     }
 </style>
-<h3><spring:message code="app.account.perconaldata"/></h3>
-<spring:message code="app.account.updatedata"/>
-<spring:message code="app.account.register"/> ${user.regDate}
-<a class="btn btn-outline-light" class="btn btn-outline-light"><spring:message code="app.account.profile"/>
-    <span class="badge badge-pill badge-success">${pageContext.request.userPrincipal.name}</span>
-</a>
-</p>
-<spring:message code="app.account.type"/> ${user.role.name}
-<table border="1" cellpadding="10" class="table_blur" align="center" width="100%">
+<h3 style="text-align: center"><spring:message code="app.type"/>"</h3>
+<table border="1" cellpadding="10" class="table_blur" align="center">
     <tr>
-        <td><spring:message code="app.account.name"/>
-        </td>
-        <td>${user.name}</td>
-    </tr>
-    <tr>
-    <tr>
-        <td><spring:message code="app.account.dateofbirth"/>
-        </td>
-        <td>${user.dateOfBirth}</td>
-
-    </tr>
-    <tr>
-        <td><spring:message code="app.account.email"/></td>
-        <td>${user.email}</td>
-
-    </tr>
-    <tr>
-        <td><spring:message code="app.account.phone"/>
-        </td>
-        <td>${user.phoneNumber}</td>
-
-    </tr>
-    <tr>
-        <td><spring:message code="app.account.gender"/></td>
-        <td>${user.gender}</td>
-    </tr>
-    <tr>
-        <td></td>
         <td>
-            <form action="/account/edit" method="get">
-                <button class="btn btn-outline-secondary" type="submit"><spring:message code="app.edit"/></button>
+            <form action="/admin/type/add" method="post">
+                <p class="card-text"><spring:message code="app.any.name"/>: <input type="text" placeholder="<spring:message code="app.any.name"/>" name="name" id="name"
+                                                      value="" required></p>
+                <p class="card-text"><spring:message code="app.any.description"/>: <input type="text" placeholder="<spring:message code="app.any.description"/>" name="description"
+                                                      id="description"
+                                                      value="" required></p>
+                <button class="btn btn-primary" type="submit" name="add"><spring:message code="app.create"/></button>
             </form>
         </td>
     </tr>
+    <c:forEach var="type" items="${type}">
+        <tr>
+            <td>
+                <div class="card" style="width: 80rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${type.name}</h5>
+                        <p class="card-text">${type.description}</p>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </c:forEach>
 </table>
 </body>
 </html>

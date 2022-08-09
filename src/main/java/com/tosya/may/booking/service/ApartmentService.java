@@ -3,6 +3,7 @@ package com.tosya.may.booking.service;
 import com.tosya.may.booking.entity.*;
 import com.tosya.may.booking.repository.AddressRepository;
 import com.tosya.may.booking.repository.ApartmentRepository;
+import com.tosya.may.booking.repository.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,12 @@ public class ApartmentService {
     private CityService cityService;
     @Autowired
     private ComfortService comfortService;
+    @Autowired
+    private PartnerRepository partnerRepository;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private ImageService imageService;
 
     public Apartment getById(int id) {
         return apartmentRepository.getById(id);
@@ -44,6 +51,9 @@ public class ApartmentService {
         for (Map.Entry<String, String> entry : body.entrySet()) {
             System.out.println(entry.getKey());
             switch (entry.getKey()) {
+                case "lang": {
+                    break;
+                }
                 case "dateStart": {
                     dateSt = LocalDate.parse(entry.getValue());
                     break;
@@ -80,13 +90,21 @@ public class ApartmentService {
     }
 
     public void editApartmentByMap(Map<String, String> body, int id) {
+        Apartment apartment = null;
         System.out.println(body);
-        Apartment apartment = apartmentRepository.getById(Integer.valueOf(body.get("apartment")));
+        if (id == -1) {
+            apartment = new Apartment();
+            apartment.setPartner(userService.getAuthenticationUser().getPartner());
+            apartment.setImage(imageService.getByName("Нет фото"));
+        } else {
+            apartment = apartmentRepository.getById(Integer.valueOf(body.get("apartment")));
+        }
         Address address = new Address();
         Set<Comfort> comfort = new HashSet<>();
         for (Map.Entry<String, String> entry : body.entrySet()) {
             System.out.println(entry.getKey());
             switch (entry.getKey()) {
+                case "lang":
                 case "apartment": {
                     break;
                 }
@@ -111,7 +129,7 @@ public class ApartmentService {
                     apartment.setPrice(new BigDecimal(entry.getValue()));
                     break;
                 }
-                case "raiting": {
+                case "rating": {
                     apartment.setRating(Double.parseDouble(entry.getValue()));
                     break;
                 }
@@ -128,6 +146,10 @@ public class ApartmentService {
         apartment.setAddress(address);
         apartment.setApartmentComfort(comfort);
         apartmentRepository.save(apartment);
-
     }
+
+    public List<Apartment> getApartmentByUsername(String username) {
+        return apartmentRepository.findApartmentsByPartner(partnerRepository.findFirstByUser(userService.getUser(username)));
+    }
+
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ComfortService {
@@ -16,4 +17,12 @@ public class ComfortService {
         return comfortRepository.findAll();
     }
     public Comfort getComfortById(int id){return  comfortRepository.getById(id);}
+    public List<Comfort> getAll(){return comfortRepository.findAll();};
+
+    public void addComfort(Map<String, String> body) {
+        Comfort comfort = new Comfort();
+        comfort.setName(body.get("name"));
+        comfort.setDescription(body.get("description"));
+        comfortRepository.save(comfort);
+    }
 }

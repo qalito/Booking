@@ -15,15 +15,15 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <body>
 <div style="background: #2E77CD; height: 50px; border: 5px solid #2E77CD;">
-    <a class="btn btn-outline-light" name="Users" href="/admin/users">Пользователи</a>
-    <a class="btn btn-outline-light" name="Booking" href="/allBooking">Бронирования</a>
-    <a class="btn btn-outline-light" name="Basket" href="/admin/basket">Корзины</a>
-    <a class="btn btn-outline-light" name="Apartment" href="/admin/apartment">Апартаменты</a>
-    <a class="btn btn-outline-light" name="Image" href="/admin/image">Изображения</a>
-    <a class="btn btn-outline-light" name="Country" href="/admin/country">Страны</a>
-    <a class="btn btn-outline-light" name="City" href="/admin/city">Города</a>
-    <a class="btn btn-outline-light" name="Comfort" href="/admin/comfort">Комфорты апартаментов</a>
-    <a class="btn btn-outline-light" name="Type" href="/admin/type">Типы апартаментов</a>
+    <a class="btn btn-outline-light" name="Users" href="/admin/users"><spring:message code="app.admin.users"/></a>
+    <a class="btn btn-outline-light" name="Booking" href="/allBooking"><spring:message code="app.admin.booking"/></a>
+    <a class="btn btn-outline-light" name="Basket" href="/admin/basket"><spring:message code="app.admin.basket"/></a>
+    <a class="btn btn-outline-light" name="Apartment" href="/admin/apartment"><spring:message code="app.admin.apartment"/></a>
+    <a class="btn btn-outline-light" name="Image" href="/admin/image"><spring:message code="app.admin.image"/></a>
+    <a class="btn btn-outline-light" name="Country" href="/admin/country"><spring:message code="app.admin.country"/></a>
+    <a class="btn btn-outline-light" name="City" href="/admin/city"><spring:message code="app.admin.city"/></a>
+    <a class="btn btn-outline-light" name="Comfort" href="/admin/comfort"><spring:message code="app.admin.comfortappartment"/></a>
+    <a class="btn btn-outline-light" name="Type" href="/admin/type"><spring:message code="app.admin.typeappartment"/></a>
 </div>
 <style>
     .table_blur {
@@ -90,43 +90,41 @@
         text-shadow: none;
     }
 </style>
-<h3>Персональные данные</h3>
-Обновите свои данные и узнайте, как мы их используем.
-
-Зарегистрированы на сайте с ${user.regDate}
-<a class="btn btn-outline-light" class="btn btn-outline-light">Профиль
+<h3><spring:message code="app.account.perconaldata"/></h3>
+<spring:message code="app.account.updatedata"/>
+<spring:message code="app.account.register"/> ${user.regDate}
+<a class="btn btn-outline-light" class="btn btn-outline-light"><spring:message code="app.account.profile"/>
     <span class="badge badge-pill badge-success">${pageContext.request.userPrincipal.name}</span>
 </a>
 </p>
-Тип аккаунта: ${user.role.name}
+<spring:message code="app.account.type"/>: ${user.role.name}
 <table border="1" cellpadding="10" class="table_blur" align="center" width="100%">
     <tr>
-        <td>Имя, укажите имя, которое будет отображаться на сайте, данное имя отображается для других пользователей,
-            используется для обращения к Вам
+        <td><spring:message code="app.account.name"/>
         </td>
         <td>${user.name}</td>
     </tr>
     <tr>
     <tr>
-        <td>Дата рождения, необходимая системе информация.
+        <td><spring:message code="app.account.dateofbirth"/>
         </td>
         <td>${user.dateOfBirth}</td>
 
     </tr>
     <tr>
-        <td>Email, адрес может использоваться для информирования пользователей.
+        <td><spring:message code="app.account.email"/>
         </td>
         <td>${user.email}</td>
 
     </tr>
     <tr>
-        <td>Телефон, укажите ваш номер телефона, сюда могут звонить ваши хозяева жилья/жильцы.
+        <td><spring:message code="app.account.phone"/>
         </td>
         <td>${user.phoneNumber}</td>
 
     </tr>
     <tr>
-        <td>Пол, укажите ваш пол.</td>
+        <td><spring:message code="app.account.gender"/></td>
         <td>${user.gender}</td>
     </tr>
 </table>

@@ -33,7 +33,7 @@
                 <a class="dropdown-item" href="?lang=en"><spring:message code="app.lang.english"/></a>
                 <a class="dropdown-item" href="?lang=ru"><spring:message code="app.lang.russian"/></a>
             </div>
-            <a class="btn btn-outline-light" name="Main" href="/">На главную</a>
+            <a class="btn btn-outline-light" name="Main" href="/"><spring:message code="app.header.main"/></a>
             <sec:authorize access="!isAuthenticated()">
                 <a class="btn btn-outline-light" name="RegisterAsPartner" href="/register?role=PARTNER"><spring:message
                         code="app.header.registerPartner"/></a>
@@ -44,18 +44,18 @@
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
             <div class="dropdown"  style="float:right;">
-                    <a class="btn btn-outline-light" class="btn btn-outline-light" id="dropdownMenu1" data-toggle="dropdown" >Профиль
+                    <a class="btn btn-outline-light" class="btn btn-outline-light" id="dropdownMenu1" data-toggle="dropdown" ><spring:message code="app.header.profile"/>
                     <span class="badge badge-pill badge-success">${pageContext.request.userPrincipal.name}</span>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <a class="btn btn-light" href="/account">Аккаунт</a>
-                        <a class="btn btn-light" href="/users/${pageContext.request.userPrincipal.name}/booking">Бронирования</a>
-                        <a class="btn btn-light" href="/users/${pageContext.request.userPrincipal.name}/apartment">Апартаменты</a>
+                        <a class="btn btn-light" href="/account"><spring:message code="app.header.account"/></a>
+                        <a class="btn btn-light" href="/users/${pageContext.request.userPrincipal.name}/booking"><spring:message code="app.header.booking"/></a>
+                        <a class="btn btn-light" href="/users/${pageContext.request.userPrincipal.name}/apartment"><spring:message code="app.header.apartment"/></a>
                     </div>
                 </a>
             </div>
                 <a class="btn btn-outline-light" name="SignOut" href="/logout"><spring:message
                         code="app.header.signOut"/></a>
-                <a class="btn btn-outline-light" name="Admin" href="/admin">Администрирование</a>
+                <a class="btn btn-outline-light" name="Admin" href="/admin"><spring:message code="app.header.admin"/></a>
             </sec:authorize>
         </div>
     </div>

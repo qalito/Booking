@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: tosya
@@ -73,7 +74,7 @@
         text-shadow: none;
     }
 </style>
-<h3 style="text-align: center">Апартамент</h3>
+<h3 style="text-align: center"><spring:message code="app.apartmet"/></h3>
 <table border="1" cellpadding="10" class="table_blur" align="center">
     <tr>
         <td>
@@ -82,9 +83,9 @@
                 <div class="card-body" style="text-align: left">
                     <form action="/apartment/edit/${apartment.id}" method="post">
                         <input type="hidden" name="apartment" value="${apartment.id}">
-                        <p class="card-text">Название: <input type="text" placeholder="Name" name="name" id="name"
+                        <p class="card-text"><spring:message code="app.apartmet.name"/>: <input type="text" placeholder="<spring:message code="app.apartmet.name"/>" name="name" id="name"
                                                               value="${apartment.name}" required></p>
-                        <p class="card-text">Город: <select class="custom-select" id="inputGroupSelect01"
+                        <p class="card-text"><spring:message code="app.apartmet.city"/>: <select class="custom-select" id="inputGroupSelect01"
                                                             autocomplete="on" required>
                             <option selected value=${apartment.address.city.id}>${apartment.address.city.name}</option>
                             <c:forEach var="city" items="${listCity}">
@@ -94,26 +95,26 @@
                         </select>
                         </p>
                         <input type="hidden" name="selectedCityId" value="${apartment.address.city.id}">
-                        <p class="card-text">Адрес: <input type="text" placeholder="Address" name="address" id="address"
+                        <p class="card-text"><spring:message code="app.apartmet.address"/>: <input type="text" placeholder="<spring:message code="app.apartmet.address"/>" name="address" id="address"
                                                            value="${apartment.address.value}" required></p>
-                        <p class="card-text">Вместимость: <input type="text" placeholder="Capacity" name="capacity"
+                        <p class="card-text"><spring:message code="app.apartmet.capacity"/>: <input type="text" placeholder="<spring:message code="app.apartmet.capacity"/>" name="capacity"
                                                                  id="capacity"
                                                                  value="${apartment.capacity}" required></p>
-                        <p class="card-text">Стоимость: <input type="text" placeholder="Price" name="price" id="price"
+                        <p class="card-text"><spring:message code="app.apartmet.price"/>: <input type="text" placeholder="<spring:message code="app.apartmet.price"/>" name="price" id="price"
                                                                value="${apartment.price}" required></p>
-                        <p class="card-text">Рейтинг: <input type="text" placeholder="Rating" name="rating" id="rating"
+                        <p class="card-text"><spring:message code="app.apartmet.raiting"/>: <input type="text" placeholder="<spring:message code="app.apartmet.raiting"/>" name="rating" id="rating"
                                                              value="${apartment.rating}" required></p>
-                        <p><b>Фильтры для поиска</b></p>
-                        <p><b>Тип</b></p>
+                        <p><b><spring:message code="app.apartmet.filter"/></b></p>
+                        <p><b><spring:message code="app.apartmet.type"/></b></p>
                         <c:forEach var="filter" items="${listFilter}">
                             <input type="radio" name="filter" value="${filter.id}" checked>${filter.name}<Br>
                         </c:forEach>
-                        <p><b>Комфорт</b></p>
+                        <p><b><spring:message code="app.apartmet.comfort"/></b></p>
                         <p>
                             <c:forEach var="comfort" items="${listComfort}">
                             <input type="checkbox" name="${comfort.id}" value="${comfort.id}">${comfort.name}<Br>
                             </c:forEach>
-                            <button class="btn btn-primary">Редактировать</button>
+                            <button class="btn btn-primary"><spring:message code="app.edit"/></button>
                     </form>
                 </div>
             </div>

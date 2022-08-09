@@ -20,9 +20,9 @@
 <div name="chooseInfo" style="width: 100%; background: #FFE87C;">
     <div class="input-group mb">
         <div class="input-group-prepend">
-            <label class="input-group-text">Заезд - Выезд</label>
+            <label class="input-group-text"><spring:message code="app.search.check"/></label>
         </div>
-        <input type="text" name="daterange" value="" placeholder="Заезд - Выезд"/>
+        <input type="text" name="daterange" value="" placeholder="<spring:message code="app.search.check"/>"/>
         <div class="cart-item-info much">
             <button class="jsminus">-</button>
             <input style="width: 30px" type="text" value="1" id="input1" name="input1" maxlength="2" disabled>
@@ -33,7 +33,7 @@
 <form id="searchForm" method="get" action="/searchresults" content="">
     <div style="background: #FFE87C;">
         <select class="custom-select" id="inputGroupSelect01" autocomplete="on" required>
-            <option disabled selected hidden value="">Куда хотите отправиться?</option>
+            <option disabled selected hidden value=""><spring:message code="app.search.question"/></option>
             <c:forEach var="city" items="${listCity}">
                 <c:out value="${city.id}"/>
                 <option value=<c:out value="${city.id}"/>><c:out value="${city.name}"/></option>
@@ -47,7 +47,8 @@
             <input type="hidden" name="order">
             <input type="hidden" name="filter" value="1">
             <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary" type="submit">Поиск</button>
+                <button class="btn btn-outline-secondary" type="submit"><spring:message
+                        code="app.search.find"/></button>
             </div>
         </div>
     </div>
@@ -76,6 +77,8 @@
         $("#searchForm").submit(function (event) {
                 let ord = $("#orderInput option:selected").val();
                 $('input[name="order"]').val(ord);
+                ord = $("#inputGroupSelect01 option:selected").val();
+                $('input[name="selectedCityId"]').val(ord);
                 console.log("legacy");
                 $('input[name="count"]').val($("input#input1").val());
                 $('input[name="dateStart"]').val($('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD'));
@@ -103,7 +106,7 @@
         });
     </script>
 
-    <h3>Популярные направления:</h3>
+    <h3><spring:message code="app.search.popular"/></h3>
     <h5>Страны:</h5>
     <div class="card-group">
         <c:forEach var="country" items="${listCountry}">
@@ -123,7 +126,7 @@
             </div>
         </c:forEach>
     </div>
-    <h5>Популярные города:</h5>
+    <h5><spring:message code="app.search.popularcity"/></h5>
     <div class="card-group">
         <c:forEach var="city" items="${listCity}" varStatus="status">
             <c:if test="${status.count%2==0}">

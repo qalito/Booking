@@ -79,17 +79,17 @@
 <body>
 
 <div class="dropdown">
-    <h3 align="center">Бронирования</h3>
+    <h3 align="center"><spring:message code="app.header.booking"/></h3>
         <table border="1" cellpadding="10" class="table_blur" align="center">
             <tr>
-                <th>Апартаменты:</th>
-                <th>Номер бронирования:</th>
-                <th>Дата бронирования:</th>
-                <th>Бронь с:</th>
-                <th>Бронь по:</th>
-                <th>Пользователь:</th>
-                <th>Итоговая Сумма:</th>
-                <th>Расторгнуть</th>
+                <th><spring:message code="app.apartmet"/>:</th>
+                <th><spring:message code="app.booking.number"/>:</th>
+                <th><spring:message code="app.booking.date"/>:</th>
+                <th><spring:message code="app.header.booking"/><spring:message code="app.searchresults.st"/>:</th>
+                <th><spring:message code="app.header.booking"/><spring:message code="app.searchresults.po"/>:</th>
+                <th><spring:message code="app.user.name"/>:</th>
+                <th><spring:message code="app.booking.total"/>:</th>
+                <th><spring:message code="app.terminate"/></th>
             </tr>
             <c:forEach var="el" items="${bookings}">
                 <tr>
@@ -99,16 +99,16 @@
                             <h5 class="card-title">${apartment.name}</h5>
                             <img class="card-img-bottom"  style="width: 40rem;" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
                             <div class="card-body">
-                                <p class="card-text">Название: ${apartment.type.name}</p>
-                                <p class="card-text">Город: ${apartment.address.city.name}</p>
-                                <p class="card-text">Страна: ${apartment.address.country.name}</p>
-                                <p class="card-text">Адрес: ${apartment.address.value}</p>
-                                <p class="card-text">Вместимость: ${apartment.capacity}</p>
-                                <p class="card-text">Стоимость: ${apartment.price}</p>
-                                <p class="card-text">Рейтинг:${apartment.rating}</p>
-                                <p class="card-text">Владелец: Пользователь ${apartment.partner.user.username}, ${apartment.partner.user.name} </p>
-                                <p class="card-text">Связь с владельцем: Телефон ${apartment.partner.user.phoneNumber} Почта ${apartment.partner.user.email}</p>
-                                Список удобств:
+                                <p class="card-text"><spring:message code="app.apartmet.name"/>: ${apartment.type.name}</p>
+                                <p class="card-text"><spring:message code="app.apartmet.city"/>: ${apartment.address.city.name}</p>
+                                <p class="card-text"><spring:message code="app.apartmet.country"/>: ${apartment.address.country.name}</p>
+                                <p class="card-text"><spring:message code="app.apartmet.address"/>: ${apartment.address.value}</p>
+                                <p class="card-text"><spring:message code="app.apartmet.capacity"/>: ${apartment.capacity}</p>
+                                <p class="card-text"><spring:message code="app.apartmet.price"/>: ${apartment.price}</p>
+                                <p class="card-text"><spring:message code="app.apartmet.raiting"/>:${apartment.rating}</p>
+                                <p class="card-text"><spring:message code="app.apartmet.owner"/> ${apartment.partner.user.username}, ${apartment.partner.user.name} </p>
+                                <p class="card-text"><spring:message code="app.apartmet.comunic"/> ${apartment.partner.user.phoneNumber} <spring:message code="app.apartmet.email"/> ${apartment.partner.user.email}</p>
+                                <spring:message code="app.apartmet.listComfort"/>:
                                 <c:forEach var="comfort" items="${apartment.apartmentComfort}">
                                     ${comfort.name};
                                 </c:forEach>
@@ -119,9 +119,9 @@
                     <td><c:out value="${el.dateBooking}"/></td>
                     <td><c:out value="${el.dateStart}"/></td>
                     <td><c:out value="${el.dateTo}"/></td>
-                    <td><c:out value="Пользователь ${el.user.username}, ${el.user.name}  Телефон ${el.user.phoneNumber} Почта ${el.user.email}"/></td>
+                    <td><spring:message code="app.user.name"/>: ${el.user.username}, ${el.user.name}  <spring:message code="app.basket.phone"/>: ${el.user.phoneNumber} <spring:message code="app.basket.email"/>: ${el.user.email}</td>
                     <td><c:out value="${el.total}"/></td>
-                    <td><a href="/delete/booking/${el.id}" class="btn btn-primary">Расторгнуть</a></td>
+                    <td><a href="/delete/booking/${el.id}" class="btn btn-primary"><spring:message code="app.terminate"/></a></td>
                 </tr>
             </tr>
             <tr>

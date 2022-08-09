@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: tosya
@@ -11,7 +12,7 @@
 <head>
 </head>
 <body>
-<h3 style="text-align: center">Все изображения</h3>
+<h3 style="text-align: center"><spring:message code="app.image.image"/></h3>
 <table border="1" cellpadding="10" class="table_blur" align="center">
     <div class="card-group">
         <c:forEach var="image" items="${imageList}">
@@ -26,11 +27,11 @@
                 </td>
             <td>
                 <form name="form1" method="post" action="/set/image/${image.id}">
-                    <p> Пожалуйста, выберите URL картинки: </p>
+                    <p> <spring:message code="app.image.url"/>:</p>
                     <input type="file" name="image">
                     <p>
                         <input type="text" name="name" value="${image.name}">
-                        <input type = "submit" name = "Загрузить" value = "Загрузить">
+                        <input type = "submit" name = "Загрузить" value = "<spring:message code="app.download"/> ">
                     </p>
                 </form>
             </td>
