@@ -21,6 +21,8 @@ public class Booking {
     private LocalDateTime dateBooking;
     private LocalDate dateStart;
     private LocalDate dateTo;
+    /*Status ST - оформлено, AN - аннулировано, OK-подтверждено, CL-завершено*/
+    private String status;
     @ManyToOne
     @JoinColumn(name = "username")
     private User user;

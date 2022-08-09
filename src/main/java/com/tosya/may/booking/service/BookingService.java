@@ -3,7 +3,9 @@ package com.tosya.may.booking.service;
 import com.tosya.may.booking.entity.Apartment;
 import com.tosya.may.booking.entity.Basket;
 import com.tosya.may.booking.entity.Booking;
+import com.tosya.may.booking.repository.ApartmentRepository;
 import com.tosya.may.booking.repository.BookingRepository;
+import com.tosya.may.booking.repository.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,10 @@ public class BookingService {
     private UserService userService;
     @Autowired
     private BasketService basketService;
-
+    @Autowired
+    private PartnerRepository partnerRepository;
+    @Autowired
+    private ApartmentService apartmentService;
     public List<Booking> returnAllBookingByUsername(String username) {
         return bookingRepository.findBookingsByUser(userService.getUser(username));
     }
@@ -45,7 +50,8 @@ public class BookingService {
         booking.setDateStart(basket.getDateStart());
         booking.setDateTo(basket.getDateTo());
         booking.setDateBooking(LocalDateTime.now());
-        double sum = 0, count = Period.between(basket.getDateStart(), basket.getDateTo()).getDays()+1;
+        booking.setStatus("ST");
+        double sum = 0, count = Period.between(basket.getDateStart(), basket.getDateTo()).getDays() + 1;
         sum = apartments
                 .stream()
                 .mapToDouble(apartment -> apartment.getPrice().doubleValue())
@@ -56,10 +62,17 @@ public class BookingService {
         bookingRepository.save(booking);
         return booking;
     }
-    public List<Booking> findBookingByUsername(String username){
+    public void changeStatus(String status, int id) {
+        Booking booking = bookingRepository.getById(id);
+        booking.setStatus(status);
+        bookingRepository.save(booking);
+    }
+
+    public List<Booking> findBookingByUsername(String username) {
         return bookingRepository.findBookingsByUser(userService.getUser(username));
     }
-    public void deleteById(int id){
-        bookingRepository.deleteById(id);
+
+    public List<Booking> findBookingByApartment(int id) {
+        return bookingRepository.findBookingsByBookingApartment(apartmentService.getById(id));
     }
 }

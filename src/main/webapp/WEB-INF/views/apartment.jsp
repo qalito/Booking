@@ -74,7 +74,7 @@
         text-shadow: none;
     }
 </style>
-<h3 style="text-align: center"><spring:message code="app.apartmet"/>s</h3>
+<h3 style="text-align: center"><spring:message code="app.apartmet"/></h3>
 
 <table border="1" cellpadding="10" class="table_blur" align="center">
     <c:forEach var="apartment" items="${apartmentList}">
@@ -83,31 +83,34 @@
                 <input type="hidden" name="apartment" value="${apartment}">
                 <div class="card" style="width: 90rem;">
                     <h5 class="card-title">${apartment.name}</h5>
+                    <a href="/booking/apartment/${apartment.id}" class="btn btn-primary"><spring:message code="app.bookingbtn"/></a>
                     <img class="card-img-bottom" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
                     <div class="card-body" style="text-align: left">
                         <p class="card-text"><spring:message code="app.apartmet.name"/>: ${apartment.type.name}</p>
-                        <p class="card-text"><spring:message code="app.apartmet.city"/>: ${apartment.address.city.name}</p>
-                        <p class="card-text"><spring:message code="app.apartmet.country"/>: ${apartment.address.country.name}</p>
-                        <p class="card-text"><spring:message code="app.apartmet.address"/>: ${apartment.address.value}</p>
+                        <p class="card-text"><spring:message
+                                code="app.apartmet.city"/>: ${apartment.address.city.name}</p>
+                        <p class="card-text"><spring:message
+                                code="app.apartmet.country"/>: ${apartment.address.country.name}</p>
+                        <p class="card-text"><spring:message
+                                code="app.apartmet.address"/>: ${apartment.address.value}</p>
                         <p class="card-text"><spring:message code="app.apartmet.capacity"/>: ${apartment.capacity}</p>
                         <p class="card-text"><spring:message code="app.apartmet.price"/>: ${apartment.price}</p>
                         <p class="card-text"><spring:message code="app.apartmet.raiting"/>:${apartment.rating}</p>
-                        <p class="card-text"><spring:message code="app.apartmet.owner"/> ${apartment.partner.user.username}, ${apartment.partner.user.name} </p>
-                        <p class="card-text"><spring:message code="app.apartmet.comunic"/> ${apartment.partner.user.phoneNumber} <p class="card-text"><spring:message code="app.apartmet.email"/> ${apartment.partner.user.email}</p>
+                        <p class="card-text"><spring:message
+                                code="app.apartmet.owner"/> ${apartment.partner.user.username}, ${apartment.partner.user.name} </p>
+                        <p class="card-text">
+                                <spring:message code="app.apartmet.comunic"/> ${apartment.partner.user.phoneNumber}
+                        <p class="card-text"><spring:message
+                                code="app.apartmet.email"/> ${apartment.partner.user.email}</p>
                         <p class="card-text"><spring:message code="app.admin.comfortappartment"/>:
-                        <c:forEach var="comfort" items="${apartment.apartmentComfort}">
-                            ${comfort.name};
-                        </c:forEach>
-                        <form action="/apartment/edit/${apartment.id}" method="get">
-                            <button class="btn btn-primary"><p class="card-text"><spring:message code="app.edit"/></button>
-                        </form>
+                            <c:forEach var="comfort" items="${apartment.apartmentComfort}">
+                                ${comfort.name};
+                            </c:forEach>
                     </div>
                 </div>
             </td>
         </tr>
     </c:forEach>
-    <form action="/apartment/add" method="get">
-        <button class="btn btn-primary"><spring:message code="app.add"/></button>
-    </form>
+
 </table>
 </body>

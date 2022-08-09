@@ -29,9 +29,9 @@ public class BookingController {
         model.addAttribute("bookings",bookingService.findBookingByUsername(username));
         return "booking";
     }
-    @GetMapping(value = "/delete/booking/{id}")
-    public String editBooking(ModelMap model, @PathVariable("id") int id){
-        bookingService.deleteById(id);
+    @GetMapping(value = "/change/booking/{id}/{status}")
+    public String editBooking(ModelMap model, @PathVariable("id") int id,@PathVariable("status") String status){
+        bookingService.changeStatus(status, id);
         return "redirect:/";
     }
     @GetMapping("/allBooking")
@@ -40,4 +40,10 @@ public class BookingController {
         model.addAttribute("bookings", booking);
         return "booking";
     }
+    @GetMapping(value = "/booking/apartment/{id}")
+    public String getBookingByApartment(ModelMap model, @PathVariable("id") int id){
+        model.addAttribute("bookings", bookingService.findBookingByApartment(id));
+        return "booking";
+    }
+
 }

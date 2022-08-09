@@ -84,6 +84,7 @@
             <tr>
                 <th><spring:message code="app.apartmet"/>:</th>
                 <th><spring:message code="app.booking.number"/>:</th>
+                <th><spring:message code="app.booking.status"/>:</th>
                 <th><spring:message code="app.booking.date"/>:</th>
                 <th><spring:message code="app.header.booking"/><spring:message code="app.searchresults.st"/>:</th>
                 <th><spring:message code="app.header.booking"/><spring:message code="app.searchresults.po"/>:</th>
@@ -95,9 +96,9 @@
                 <tr>
                     <td>  <c:forEach var="apartment" items="${el.bookingApartment}">
                         <input type="hidden" name="apartment" value="${apartment}">
-                        <div class="card" style="width: 40rem;">
+                        <div class="card" style="width: 35rem;">
                             <h5 class="card-title">${apartment.name}</h5>
-                            <img class="card-img-bottom"  style="width: 40rem;" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
+                            <img class="card-img-bottom"  style="width: 35rem;" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
                             <div class="card-body">
                                 <p class="card-text"><spring:message code="app.apartmet.name"/>: ${apartment.type.name}</p>
                                 <p class="card-text"><spring:message code="app.apartmet.city"/>: ${apartment.address.city.name}</p>
@@ -116,12 +117,18 @@
                         </div>
                     </c:forEach></td>
                     <td><c:out value="${el.number}"/></td>
+                    <td><c:out value="${el.status}"/></td>
                     <td><c:out value="${el.dateBooking}"/></td>
                     <td><c:out value="${el.dateStart}"/></td>
                     <td><c:out value="${el.dateTo}"/></td>
                     <td><spring:message code="app.user.name"/>: ${el.user.username}, ${el.user.name}  <spring:message code="app.basket.phone"/>: ${el.user.phoneNumber} <spring:message code="app.basket.email"/>: ${el.user.email}</td>
                     <td><c:out value="${el.total}"/></td>
-                    <td><a href="/delete/booking/${el.id}" class="btn btn-primary"><spring:message code="app.terminate"/></a></td>
+                    <td>
+                        <a href="/change/booking/${el.id}/AN" class="btn btn-primary"><spring:message code="app.terminate"/></a>
+                        <a href="/change/booking/${el.id}/ST" class="btn btn-primary"><spring:message code="app.inital"/></a>
+                        <a href="/change/booking/${el.id}/OK" class="btn btn-primary"><spring:message code="app.confirm"/></a>
+                        <a href="/change/booking/${el.id}/CL" class="btn btn-primary"><spring:message code="app.close"/></a>
+                    </td>
                 </tr>
             </tr>
             <tr>

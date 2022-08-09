@@ -50,6 +50,7 @@
                         <a class="btn btn-light" href="/account"><spring:message code="app.header.account"/></a>
                         <a class="btn btn-light" href="/users/${pageContext.request.userPrincipal.name}/booking"><spring:message code="app.header.booking"/></a>
                         <a class="btn btn-light" href="/users/${pageContext.request.userPrincipal.name}/apartment"><spring:message code="app.header.apartment"/></a>
+                        <a class="btn btn-light" href="/users/${pageContext.request.userPrincipal.name}/apartment"><spring:message code="app.header.apartment"/></a>
                     </div>
                 </a>
             </div>
