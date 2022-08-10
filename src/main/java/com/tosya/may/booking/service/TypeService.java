@@ -31,4 +31,8 @@ public class TypeService {
         type.setDescription(body.get("description"));
         typeRepository.save(type);
     }
+
+    public void deleteById(int id) {
+        typeRepository.deleteById(id);
+    }
 }

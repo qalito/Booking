@@ -80,27 +80,85 @@
 </style>
 <h3 style="text-align: center"><spring:message code="app.city.cites"/>::</h3>
 <table border="1" cellpadding="10" class="table_blur" align="center">
-    <tr>
-        <td>
-            <form action="/admin/city/add" method="post">
-                <p class="card-text"><spring:message code="app.any.name"/>: <input type="text" placeholder="<spring:message code="app.any.name"/>" name="name" id="name"
-                                                      value="" required></p>
-                <p class="card-text"><spring:message code="app.any.description"/>: <input type="text" placeholder="<spring:message code="app.any.description"/>" name="description"
-                                                      id="description"
-                                                      value="" required></p>
-                <p class="card-text"><spring:message code="app.city.country"/>:
-                    <select class="custom-select" id="inputGroupSelect01"
-                            autocomplete="on" required>
-                        <option selected disabled><spring:message code="app.city.selectcountry"/></option>
-                        <c:forEach var="country" items="${listCountry}">
-                            <option  value=<c:out value="${country.id}"/>><c:out value="${country.name}"/></option>
-                        </c:forEach>
-                    </select>
-                    <input type="hidden" name="countryId">
-                    <button class="btn btn-primary" type="submit" name="add"><spring:message code="app.create"/></button>
-            </form>
-        </td>
-    </tr>
+    <c:if test="${type ==null}">
+        <tr>
+            <td>
+                <form action="/admin/city/add" method="post">
+                    <p class="card-text"><spring:message code="app.any.name"/>: <input type="text"
+                                                                                       placeholder="<spring:message code="app.any.name"/>"
+                                                                                       name="name" id="name"
+                                                                                       value="" required></p>
+                    <p class="card-text"><spring:message code="app.any.description"/>: <input type="text"
+                                                                                              placeholder="<spring:message code="app.any.description"/>"
+                                                                                              name="description"
+                                                                                              id="description"
+                                                                                              value="" required></p>
+                    <p class="card-text"><spring:message code="app.city.country"/>:
+                        <select class="custom-select" id="inputGroupSelect01"
+                                autocomplete="on" required>
+                            <option selected disabled><spring:message code="app.city.selectcountry"/></option>
+                            <c:forEach var="country" items="${listCountry}">
+                                <option value=<c:out value="${country.id}"/>><c:out value="${country.name}"/></option>
+                            </c:forEach>
+                        </select>
+                        <input type="hidden" name="countryId">
+                        <script> $("#inputGroupSelect01").change(function () {
+                            let selectedOption = $("option:selected", this);
+                            let selectedVal = this.value;
+                            $('input[name="countryId"]').val(selectedVal);
+                            console.log(selectedVal);
+                            console.log("*");
+                            console.log($('input[name="countryId"]').val())
+                        });
+                        </script>
+                        <button class="btn btn-primary" type="submit" name="add"><spring:message
+                                code="app.create"/></button>
+                </form>
+
+            </td>
+        </tr>
+    </c:if>
+    <c:if test="${type !=null}">
+        <tr>
+            <td>
+                <form action="/admin/city/edit" method="post">
+                    <input type="hidden" name="cityId" value="${editCity.id}">
+                    <p class="card-text"><spring:message code="app.any.name"/>: <input type="text"
+                                                                                       placeholder="<spring:message code="app.any.name"/>"
+                                                                                       name="name" id="name"
+                                                                                       value="${editCity.name}"
+                                                                                       required></p>
+                    <p class="card-text"><spring:message code="app.any.description"/>: <input type="text"
+                                                                                              placeholder="<spring:message code="app.any.description"/>"
+                                                                                              name="description"
+                                                                                              id="description"
+                                                                                              value="${editCity.description}"
+                                                                                              required></p>
+                    <p class="card-text"><spring:message code="app.city.country"/>:
+                        <select class="custom-select" id="inputGroupSelect01"
+                                autocomplete="on" required>
+                            <option selected><spring:message code="app.city.selectcountry"/></option>
+                            <c:forEach var="country" items="${listCountry}">
+                                <option value=<c:out value="${country.id}"/>><c:out value="${country.name}"/></option>
+                            </c:forEach>
+                        </select>
+                        <input type="hidden" name="countryId">
+                        <script> $("#inputGroupSelect01").change(function () {
+                            let selectedOption = $("option:selected", this);
+                            let selectedVal = this.value;
+                            console.log("st");
+                            console.log(selectedVal);
+                            $('input[name="countryId"]').val(selectedVal);
+                            console.log($('input[name="countryId"]').val())
+                            console.log("end");
+                        });
+                        </script>
+                        <button class="btn btn-primary" type="submit" name="add"><spring:message
+                                code="app.edit"/></button>
+                </form>
+            </td>
+        </tr>
+    </c:if>
     <c:forEach var="city" items="${listCity}">
         <tr>
             <td>
@@ -113,15 +171,17 @@
                         <p class="card-text">${city.country.name}</p>
                     </div>
                 </div>
+                <form action="/admin/city/delete/${city.id}" method="get">
+                    <button class="btn btn-primary" type="submit" name="add"><spring:message
+                            code="app.delete"/></button>
+                </form>
+                <form action="/admin/city/edit/${city.id}" method="get">
+                    <button class="btn btn-primary" type="submit" name="add"><spring:message
+                            code="app.edit"/></button>
+                </form>
             </td>
         </tr>
     </c:forEach>
 </table>
 </body>
-<script> $("#inputGroupSelect01").change(function () {
-    let selectedOption = $("option:selected", this);
-    let selectedVal = this.value;
-    $('input[name="countryId"]').val(selectedVal);
-    console.log(selectedVal);
-});</script>
 </html>

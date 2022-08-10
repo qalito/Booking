@@ -101,6 +101,10 @@
                         <p class="card-text">${comfort.description}</p>
                     </div>
                 </div>
+                <form action="/admin/comfort/delete/${comfort.id}" method="get">
+                    <button class="btn btn-primary" type="submit" name="add"><spring:message
+                            code="app.delete"/></button>
+                </form>
             </td>
         </tr>
     </c:forEach>

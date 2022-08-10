@@ -16,7 +16,7 @@ public class City {
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id")
     private Image image;
     @OneToMany(mappedBy = "city")

@@ -1,6 +1,7 @@
 package com.tosya.may.booking.service;
 
 import com.tosya.may.booking.entity.City;
+import com.tosya.may.booking.entity.Image;
 import com.tosya.may.booking.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,10 +32,25 @@ public class CityService {
 
     public void addCity(Map<String, String> body) {
         City city = new City();
+        System.out.println(body.get("cityId") + "cityId");
+        if (body.get("cityId") != null) {
+            city = cityRepository.getCitiesById(Integer.parseInt(body.get("cityId")));
+        }
         city.setName(body.get("name"));
         city.setDescription(body.get("description"));
         city.setCountry(countryService.getById(Integer.parseInt(body.get("countryId"))));
-        city.setImage(imageService.getByName("Нет фото"));
+        if (body.get("cityId") == null) {
+            Image image = new Image();
+            Image noFoto = imageService.getByName("Нет фото");
+            image.setData(noFoto.getData());
+            image.setName("Город "+body.get("name"));
+            image.setType(noFoto.getType());
+            city.setImage(image);
+        }
         cityRepository.save(city);
+    }
+
+    public void deleteById(int id) {
+        cityRepository.deleteById(id);
     }
 }

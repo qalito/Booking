@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: tosya
@@ -77,6 +78,15 @@
 <h3 style="text-align: center"><spring:message code="app.apartmet"/></h3>
 
 <table border="1" cellpadding="10" class="table_blur" align="center">
+    <sec:authorize access="hasRole('ROLE_PARTNER')">
+        <tr>
+            <td>
+                <a style="width: 100%" href="/apartment/add" class="btn btn-primary"><spring:message
+                        code="app.add"/> <spring:message
+                        code="app.apartmet"/></a>
+            </td>
+        </tr>
+    </sec:authorize>
     <c:forEach var="apartment" items="${apartmentList}">
         <tr>
             <td>

@@ -20,7 +20,7 @@ public class Country {
     private Set<Address> addresses;
     @OneToMany(mappedBy = "country")
     private List<City> cities;
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id")
     private Image image;
 }

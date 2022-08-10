@@ -80,18 +80,45 @@
 </style>
 <h3 style="text-align: center"><spring:message code="app.country"/>:</h3>
 <table border="1" cellpadding="10" class="table_blur" align="center">
-    <tr>
-        <td>
-            <form action="/admin/country/add" method="post">
-                <p class="card-text"><spring:message code="app.any.name"/>: <input type="text" placeholder="<spring:message code="app.any.name"/>" name="name" id="name"
-                                                      value="" required></p>
-                <p class="card-text"><spring:message code="app.any.description"/>: <input type="text" placeholder="<spring:message code="app.any.description"/>" name="description"
-                                                      id="description"
-                                                      value="" required></p>
-                <button class="btn btn-primary" type="submit" name="add"><spring:message code="app.create"/></button>
-            </form>
-        </td>
-    </tr>
+    <c:if test="${type ==null}">
+        <tr>
+            <td>
+                <form action="/admin/country/add" method="post">
+                    <p class="card-text"><spring:message code="app.any.name"/>: <input type="text"
+                                                                                       placeholder="<spring:message code="app.any.name"/>"
+                                                                                       name="name" id="name"
+                                                                                       value="" required></p>
+                    <p class="card-text"><spring:message code="app.any.description"/>: <input type="text"
+                                                                                              placeholder="<spring:message code="app.any.description"/>"
+                                                                                              name="description"
+                                                                                              id="description"
+                                                                                              value="" required></p>
+                    <button class="btn btn-primary" type="submit" name="add"><spring:message
+                            code="app.create"/></button>
+                </form>
+            </td>
+        </tr>
+    </c:if>
+    <c:if test="${type !=null}">
+        <tr>
+            <td>
+                <form action="/admin/country/edit" method="post">
+                    <input type="hidden" name="countyId" value="${editCountry.id}">
+                    <p class="card-text"><spring:message code="app.any.name"/>: <input type="text"
+                                                                                       placeholder="<spring:message code="app.any.name"/>"
+                                                                                       name="name" id="name"
+                                                                                       value="${editCountry.name}" required></p>
+                    <p class="card-text"><spring:message code="app.any.description"/>: <input type="text"
+                                                                                              placeholder="<spring:message code="app.any.description"/>"
+                                                                                              name="description"
+                                                                                              id="description"
+                                                                                              value="${editCountry.description}" required></p>
+                    <button class="btn btn-primary" type="submit" name="add"><spring:message
+                            code="app.edit"/></button>
+                </form>
+            </td>
+        </tr>
+    </c:if>
     <c:forEach var="country" items="${listCountry}">
         <tr>
             <td>
@@ -110,6 +137,14 @@
                         </select>
                     </div>
                 </div>
+                <form action="/admin/country/delete/${country.id}" method="get">
+                    <button class="btn btn-primary" type="submit" name="add"><spring:message
+                            code="app.delete"/></button>
+                </form>
+                <form action="/admin/country/edit/${country.id}" method="get">
+                    <button class="btn btn-primary" type="submit" name="add"><spring:message
+                            code="app.edit"/></button>
+                </form>
             </td>
         </tr>
     </c:forEach>

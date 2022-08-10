@@ -27,7 +27,7 @@
     </definition>
     <!-- Searchresults Page  -->
     <definition name="searchresults" extends="base.definition">
-        <put-attribute name="title" value="Searchresults"/>
+        <put-attribute name="title" value="Search  results"/>
         <put-attribute name="body" value="/WEB-INF/views/searchresults.jsp"/>
     </definition>
     <definition name="login" extends="base.definition.center">
@@ -43,59 +43,59 @@
         <put-attribute name="body" value="/WEB-INF/views/account.jsp"/>
     </definition>
     <definition name="account_edit" extends="base.definition.center">
-        <put-attribute name="title" value="Account_edit"/>
+        <put-attribute name="title" value="Account edit"/>
         <put-attribute name="body" value="/WEB-INF/views/account_edit.jsp"/>
     </definition>
     <definition name="admin" extends="base.definition.center">
-        <put-attribute name="title" value="admin"/>
+        <put-attribute name="title" value="Admin"/>
         <put-attribute name="body" value="/WEB-INF/views/admin.jsp"/>
     </definition>
     <definition name="confirm" extends="base.definition.center">
-        <put-attribute name="title" value="confirm"/>
+        <put-attribute name="title" value="Confirm"/>
         <put-attribute name="body" value="/WEB-INF/views/confirm.jsp"/>
     </definition>
     <definition name="user" extends="base.definition.center">
-        <put-attribute name="title" value="user"/>
+        <put-attribute name="title" value="User"/>
         <put-attribute name="body" value="/WEB-INF/views/user.jsp"/>
     </definition>
     <definition name="booking" extends="base.definition.center">
-        <put-attribute name="title" value="booking"/>
+        <put-attribute name="title" value="Booking"/>
         <put-attribute name="body" value="/WEB-INF/views/booking.jsp"/>
     </definition>
     <definition name="basket" extends="base.definition.center">
-        <put-attribute name="title" value="basket"/>
+        <put-attribute name="title" value="Basket"/>
         <put-attribute name="body" value="/WEB-INF/views/basket.jsp"/>
     </definition>
     <definition name="apartment" extends="base.definition.center">
-        <put-attribute name="title" value="apartment"/>
+        <put-attribute name="title" value="Apartment"/>
         <put-attribute name="body" value="/WEB-INF/views/apartment.jsp"/>
     </definition>
     <definition name="apartment_edit" extends="base.definition.center">
-        <put-attribute name="title" value="apartment_edit"/>
+        <put-attribute name="title" value="Apartment edit"/>
         <put-attribute name="body" value="/WEB-INF/views/apartment_edit.jsp"/>
     </definition>
     <definition name="country" extends="base.definition.center">
-        <put-attribute name="title" value="country"/>
+        <put-attribute name="title" value="Country"/>
         <put-attribute name="body" value="/WEB-INF/views/country.jsp"/>
     </definition>
     <definition name="city" extends="base.definition.center">
-        <put-attribute name="title" value="city"/>
+        <put-attribute name="title" value="City"/>
         <put-attribute name="body" value="/WEB-INF/views/city.jsp"/>
     </definition>
     <definition name="image" extends="base.definition.center">
-        <put-attribute name="title" value="image"/>
+        <put-attribute name="title" value="Image"/>
         <put-attribute name="body" value="/WEB-INF/views/image.jsp"/>
     </definition>
     <definition name="apartment" extends="base.definition.center">
-        <put-attribute name="title" value="apartment"/>
+        <put-attribute name="title" value="Apartment"/>
         <put-attribute name="body" value="/WEB-INF/views/apartment.jsp"/>
     </definition>
     <definition name="comfort" extends="base.definition.center">
-        <put-attribute name="title" value="comfort"/>
+        <put-attribute name="title" value="Comfort"/>
         <put-attribute name="body" value="/WEB-INF/views/comfort.jsp"/>
     </definition>
     <definition name="type" extends="base.definition.center">
-        <put-attribute name="title" value="type"/>
+        <put-attribute name="title" value="Type"/>
         <put-attribute name="body" value="/WEB-INF/views/type.jsp"/>
     </definition>
     <!-- ContactUs Page -->

@@ -87,19 +87,19 @@
             }
         );
         $(".jsminus").click(function () {
-            let much = +$(this).closest(".much").find("input1").val();
+            let much = +$(this).closest(".much").find("#input1").val();
             let result = much - 1;
             if (result >= 1) {
-                $(this).closest(".much").find("input1").val(result)
+                $(this).closest(".much").find("#input1").val(result)
                 $('input[name="count"]').val(result);
             }
             return true;
         });
         $(".jsplus").click(function () {
-            let much = +$(this).closest(".much").find("input1").val();
+            let much = +$(this).closest(".much").find("#input1").val();
             let result = much + 1;
             if (result >= 1) {
-                $(this).closest(".much").find("input1").val(result)
+                $(this).closest(".much").find("#input1").val(result)
                 $('input[name="count"]').val(result);
             }
             return true;

@@ -25,4 +25,8 @@ public class ComfortService {
         comfort.setDescription(body.get("description"));
         comfortRepository.save(comfort);
     }
+
+    public void deleteById(int id) {
+        comfortRepository.deleteById(id);
+    }
 }

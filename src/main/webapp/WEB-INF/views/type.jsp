@@ -78,7 +78,7 @@
         text-shadow: none;
     }
 </style>
-<h3 style="text-align: center"><spring:message code="app.type"/>"</h3>
+<h3 style="text-align: center"><spring:message code="app.type"/></h3>
 <table border="1" cellpadding="10" class="table_blur" align="center">
     <tr>
         <td>
@@ -101,6 +101,10 @@
                         <p class="card-text">${type.description}</p>
                     </div>
                 </div>
+                <form action="/admin/type/delete/${type.id}" method="get">
+                <button class="btn btn-primary" type="submit" name="add"><spring:message
+                        code="app.delete"/></button>
+                </form>
             </td>
         </tr>
     </c:forEach>
