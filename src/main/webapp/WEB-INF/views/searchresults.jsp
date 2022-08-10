@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <html>
@@ -15,7 +16,9 @@
     <title>Апартаменты</title>
 </head>
 <body>
-<spring:message code="app.searchresults.select.city"/>${cityName}  <spring:message code="app.searchresults.st"/>:${dateStart} <spring:message code="app.searchresults.po"/> ${dateTo}. <spring:message code="app.searchresults.count"/> ${count}".
+<h5><spring:message code="app.searchresults.select.city"/>${cityName} <spring:message
+        code="app.searchresults.st"/>:${dateStart} <spring:message code="app.searchresults.po"/> ${dateTo}.
+    <spring:message code="app.searchresults.count"/> ${count}.</h5>
 <c:forEach var="apartment" items="${listApartments}">
     <form action="/confirm" method="post">
         <input type="hidden" name="apartment" value="${apartment.id}">
@@ -36,7 +39,9 @@
                 </c:forEach>
                 <input type="hidden" name="dateStart" value="${dateStart}">
                 <input type="hidden" name="dateTo" value="${dateTo}">
-                <button class="btn btn-primary"> <spring:message code="app.searchresults.book"/></button>
+                <sec:authorize access="hasRole('ROLE_USER')">
+                    <button class="btn btn-primary"><spring:message code="app.searchresults.book"/></button>
+                </sec:authorize>
             </div>
         </div>
     </form>

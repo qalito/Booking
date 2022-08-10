@@ -30,7 +30,8 @@ import java.util.Set;
                 " between :dateSt and :dateTo) " +
                 " and " +
                 " (b.date_To " +
-                " between :dateSt and :dateTo)))"
+                " between :dateSt and :dateTo)))"+
+                " order by  :order"
         ,
         resultClass=Apartment.class
 ),

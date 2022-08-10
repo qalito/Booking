@@ -36,7 +36,7 @@ public class BasketController {
     @GetMapping(value = "/confirm/cancel/basket/{basketId}")
     public String canselBasket(ModelMap model, @PathVariable("basketId") int basket) {
         basketService.deleteById(basket);
-        return "redirect:/searchresults";
+        return "redirect:/";
     }
 
     @GetMapping(value = "/admin/basket")

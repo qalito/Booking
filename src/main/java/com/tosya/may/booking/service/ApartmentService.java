@@ -81,6 +81,8 @@ public class ApartmentService {
                 }
             }
         }
+        System.out.println(order+"*");
+        if (order == null) order = "rating asc";
         return comfort.size() > 0 ?
                 apartmentRepository.getApartmentByComfort(comfort, city, type, count, dateSt, dateTo, order) :
                 apartmentRepository.getApartmentWithoutComfortSet(city, type, count, dateSt, dateTo, order);
@@ -105,13 +107,13 @@ public class ApartmentService {
                 case "apartment": {
                     break;
                 }
-                case "image":{
-                    Map<String,String> map = new HashMap<>();
+                case "image": {
+                    Map<String, String> map = new HashMap<>();
                     System.out.println(body.get("name"));
-                    map.put("name", "Апартамент "+body.get("name").toString());
-                    map.put("image",body.get("image"));
-                    System.out.println(imageService.setImage(id,map));
-                    apartment.setImage(imageService.setImage(id,map));
+                    map.put("name", "Апартамент " + body.get("name").toString());
+                    map.put("image", body.get("image"));
+                    System.out.println(imageService.setImage(id, map));
+                    apartment.setImage(imageService.setImage(id, map));
                     System.out.println(apartment.getImage());
                 }
                 case "name": {

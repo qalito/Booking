@@ -95,7 +95,7 @@
                     <h5 class="card-title">${apartment.name}</h5>
                     <a href="/booking/apartment/${apartment.id}" class="btn btn-primary"><spring:message
                             code="app.bookingbtn"/></a>
-                    <img class="card-img-bottom" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
+                    <img  class="card-img-bottom" src="/getImages/${apartment.image.id}" alt="${apartment.image.name}">
                     <div class="card-body" style="text-align: left">
                         <p class="card-text"><spring:message code="app.apartmet.name"/>: ${apartment.type.name}</p>
                         <p class="card-text"><spring:message
